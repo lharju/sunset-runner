@@ -62,7 +62,6 @@ func _ready() -> void:
 		set_interface_properties()
 		interface.initialize()
 		if interface and interface.initialize():
-			print("interface initialized")
 			get_viewport().use_xr = true
 
 func _physics_process(delta: float) -> void:
@@ -121,16 +120,13 @@ func _physics_process(delta: float) -> void:
 					calib_button.label.text = "%1.3f" % interface.k2
 				_:
 					calibration_done.emit()
-					 
-					
-					
 		States.PLAY:
-			if roll < 0.2:
+			if roll < 0.05:
 				path.progress_ratio = move_toward(path.progress_ratio, 0, abs(roll) * delta * 2.0)
-			if roll > 0.2:
+			if roll > 0.05:
 				path.progress_ratio = move_toward(path.progress_ratio, 1, abs(roll) * delta * 2.0)
 		States.MENU:
-			path.progress_ratio = move_toward(path.progress_ratio, 0.5, abs(roll) * delta * 2.0)
+			path.progress_ratio = move_toward(path.progress_ratio, 0.5,  delta * 0.25)
 		
 
 
@@ -142,5 +138,8 @@ func _on_calib_button_is_pressed() -> void:
 	cal_next = true
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
-	print("Got Hit")
+	is_hit.emit()
+
+
+func _on_area_3d_area_entered(_area: Area3D) -> void:
 	is_hit.emit()

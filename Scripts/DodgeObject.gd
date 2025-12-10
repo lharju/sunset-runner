@@ -1,6 +1,5 @@
-extends CharacterBody3D
+extends RigidBody3D
 
-func _physics_process(_delta: float) -> void:
-	move_and_slide()
-	if self.global_position.z >= 200:
+func _process(_delta: float) -> void:
+	if self.global_position.z > 200:
 		self.free()

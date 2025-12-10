@@ -6,11 +6,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8au1"]
 size = Vector3(1, 1.3496094, 3.0249023)
 
-[node name="DodgeObject" type="CharacterBody3D"]
+[node name="DodgeObject" type="RigidBody3D"]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
 script = ExtResource("1_vjvoq")
+
+[node name="LightCycle" parent="." instance=ExtResource("2_hjyyc")]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6748047, 0.01586914)
 shape = SubResource("BoxShape3D_n8au1")
-
-[node name="LightCycle" parent="." instance=ExtResource("2_hjyyc")]

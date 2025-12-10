@@ -49,8 +49,8 @@ func _on_menu_play(difficulty: int) -> void:
 	player.next_state = States.PLAY
 	game_state = States.PLAY
 	
-	object_spawner.speed = 60 + 20 * difficulty
-	object_spawner.time = 0.8 - 0.15 * difficulty
+	object_spawner.speed = 60 + 30 * difficulty
+	object_spawner.time = 0.8 - 0.2 * difficulty
 	object_spawner.enable()
 
 func _on_menu_vection(low: bool) -> void:

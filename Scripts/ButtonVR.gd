@@ -19,14 +19,12 @@ func start_gaze() -> void:
 	if is_gazed == false:
 		timer.start()
 		is_gazed = true
-		print("gazed on button")
 
 func end_gaze() -> void:
 	if is_gazed == true:
 		timer.stop()
 		progress_bar.value = 0
 		is_gazed = false
-		print('gaze ended')
 
 func _process(_delta: float) -> void:
 	if is_gazed:

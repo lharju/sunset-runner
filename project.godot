@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="VRSH25"
+config/name="Sunset Runner"
 run/main_scene="uid://be2v18ieqet5c"
 config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)

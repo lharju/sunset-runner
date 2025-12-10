@@ -99,7 +99,6 @@ speed = 0.37
 [node name="ObjectSpawner" type="Marker3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
 script = ExtResource("3_rgh2o")
-dodge_object_scn = ExtResource("4_pbw6q")
 
 [node name="Timer" type="Timer" parent="Geometry/ObjectSpawner"]
 wait_time = 0.5
@@ -121,6 +120,9 @@ script = ExtResource("8_50glp")
 [node name="Camera3D" type="Camera3D" parent="ScreenshotCamera"]
 transform = Transform3D(1, 0, 0, 0, 0.99556196, -0.09410831, 0, 0.09410831, 0.99556196, 0, 3.015, -10)
 fov = 40.5
+
+[node name="DodgeObject" parent="." instance=ExtResource("4_pbw6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.268466, 0)
 
 [connection signal="calibrate" from="Menu" to="." method="_on_menu_calibrate"]
 [connection signal="cursor" from="Menu" to="." method="_on_menu_cursor"]
