@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3ed2d3ucnq8q"]
+
+[ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_3kf3n"]
+[ext_resource type="Script" uid="uid://c6fpwvyuo04jt" path="res://Scripts/Menu.gd" id="1_6pedr"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6pedr"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ma218"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_syfuq"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3kf3n"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Menu" type="Node3D"]
+script = ExtResource("1_6pedr")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5404718, 0)
+text = "Sunset Runner"
+font_size = 64
+
+[node name="TutorialText" type="Label3D" parent="Title"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+text = "Dodge oncoming objects
+Move by tilting your head left/right"
+
+[node name="Play" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+text = "Play"
+
+[node name="PlayEasy" parent="Play" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+texture = SubResource("ViewportTexture_6pedr")
+text = "Easy"
+
+[node name="Label" parent="Play/PlayEasy/SubViewport" index="1"]
+text = "Easy"
+
+[node name="PlayMedium" parent="Play" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+texture = SubResource("ViewportTexture_s2c3o")
+text = "Medium"
+
+[node name="Label" parent="Play/PlayMedium/SubViewport" index="1"]
+text = "Medium"
+
+[node name="PlayHard" parent="Play" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+texture = SubResource("ViewportTexture_ma218")
+text = "Hard"
+
+[node name="Label" parent="Play/PlayHard/SubViewport" index="1"]
+text = "Hard"
+
+[node name="Settings" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 2.5, 0)
+text = "Settings"
+
+[node name="Calibrate" parent="Settings" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+texture = SubResource("ViewportTexture_syfuq")
+text = "Calibrate"
+
+[node name="Label" parent="Settings/Calibrate/SubViewport" index="1"]
+text = "Calibrate"
+
+[node name="LowVection" parent="Settings" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+texture = SubResource("ViewportTexture_3kf3n")
+text = "Low Vection"
+
+[node name="Label" parent="Settings/LowVection/SubViewport" index="1"]
+text = "Low Vection"
+
+[node name="CheckBox" type="CheckBox" parent="Settings/LowVection/SubViewport" index="2"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+button_mask = 0
+
+[node name="Cursor" parent="Settings" instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+texture = SubResource("ViewportTexture_idohh")
+text = "Cursor"
+
+[node name="Label" parent="Settings/Cursor/SubViewport" index="1"]
+text = "Cursor"
+
+[node name="CheckBox" type="CheckBox" parent="Settings/Cursor/SubViewport" index="2"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+button_pressed = true
+button_mask = 0
+
+[node name="Highscores" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 2.5, 0)
+text = "Highscores"
+
+[node name="Easy" type="Label3D" parent="Highscores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+text = "-"
+
+[node name="Medium" type="Label3D" parent="Highscores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+text = "-"
+
+[node name="Hard" type="Label3D" parent="Highscores"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+text = "-"
+
+[connection signal="is_pressed" from="Play/PlayEasy" to="." method="_on_play_easy_is_pressed"]
+[connection signal="is_pressed" from="Play/PlayMedium" to="." method="_on_play_medium_is_pressed"]
+[connection signal="is_pressed" from="Play/PlayHard" to="." method="_on_play_hard_is_pressed"]
+[connection signal="is_pressed" from="Settings/Calibrate" to="." method="_on_calibrate_is_pressed"]
+[connection signal="is_pressed" from="Settings/LowVection" to="." method="_on_low_vection_is_pressed"]
+[connection signal="is_pressed" from="Settings/Cursor" to="." method="_on_cursor_is_pressed"]
+
+[editable path="Play/PlayEasy"]
+[editable path="Play/PlayMedium"]
+[editable path="Play/PlayHard"]
+[editable path="Settings/Calibrate"]
+[editable path="Settings/LowVection"]
+[editable path="Settings/Cursor"]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://x15y4mbsli45"]
+
+[ext_resource type="Script" uid="uid://dapi2bos0lpcm" path="res://Scripts/ButtonVR.gd" id="1_6hvty"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2yy3o"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hvty"]
+size = Vector3(1, 0.64, 0.1)
+
+[node name="ButtonVR" type="Sprite3D"]
+cast_shadow = 0
+no_depth_test = true
+render_priority = 2
+texture = SubResource("ViewportTexture_2yy3o")
+script = ExtResource("1_6hvty")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(96, 64)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Foobar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_6hvty")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

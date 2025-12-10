@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkruo0bs247fy"]
+
+[ext_resource type="PackedScene" uid="uid://be2v18ieqet5c" path="res://Scenes/Main.tscn" id="1_pw0oj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pw0oj"]
+viewport_path = NodePath("SubViewport")
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_pw0oj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 126
+text = "This is UI test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(2, 2)
+
+[node name="Node3D" parent="SubViewport" instance=ExtResource("1_pw0oj")]

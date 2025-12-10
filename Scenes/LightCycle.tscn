@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cme4oib8nnspy"]
+
+[ext_resource type="PackedScene" uid="uid://72avkwlordxr" path="res://Models/Untitled.glb" id="1_waoyn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waoyn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4hnqj"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6q6qm"]
+albedo_color = Color(1, 0.49803922, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyduy"]
+albedo_color = Color(0.26110986, 0.545031, 0.8576348, 1)
+emission_enabled = true
+emission = Color(0, 0.9490196, 0.9490196, 1)
+emission_energy_multiplier = 1.87
+
+[node name="LightCycle" instance=ExtResource("1_waoyn")]
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 0)
+
+[node name="Cylinder" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_waoyn")
+
+[node name="Cylinder_001" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_4hnqj")
+
+[node name="Cube" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_6q6qm")
+
+[node name="Cube_001" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_pyduy")

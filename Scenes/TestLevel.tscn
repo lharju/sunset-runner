@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy2pp6ci41yc2"]
+
+[ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_5ms4e"]
+[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="2_5ms4e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y1jsw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_1kog2"]
+sky_material = SubResource("ProceduralSkyMaterial_y1jsw")
+
+[sub_resource type="Environment" id="Environment_2xot7"]
+background_mode = 2
+sky = SubResource("Sky_1kog2")
+ambient_light_source = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1jsw"]
+albedo_color = Color(0.15487596, 0.154876, 0.15487596, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_34lg8"]
+material = SubResource("StandardMaterial3D_y1jsw")
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y1jsw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ms4e"]
+viewport_path = NodePath("SubViewport")
+
+[node name="XROrigin3D" type="XROrigin3D"]
+current = true
+script = ExtResource("2_5ms4e")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7070405, 0)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2xot7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 4.044507, 0)
+light_angular_distance = 2.73
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_34lg8")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_y1jsw")
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("1_5ms4e")]
+transform = Transform3D(1, 0, 0, 0, 0.9383664, 0.34564215, 0, -0.34564215, 0.9383664, 0, 0.9082254, -2.423913)
+texture = SubResource("ViewportTexture_5ms4e")

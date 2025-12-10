@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://drfakj0pu768p"]
+
+[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="1_fdbg2"]
+[ext_resource type="Script" uid="uid://bkukhu46m616y" path="res://Scripts/ray_cast_3d.gd" id="2_3a4ce"]
+[ext_resource type="PackedScene" uid="uid://dcjlyl67s0wxe" path="res://Scenes/CalibButton.tscn" id="4_3a4ce"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hd57e"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_fdbg2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3a4ce"]
+gradient = SubResource("Gradient_fdbg2")
+width = 1
+height = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3a4ce"]
+size = Vector3(0.6, 1, 0.6)
+
+[node name="CardBoardVR" type="XROrigin3D"]
+current = true
+script = ExtResource("1_fdbg2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+current = true
+
+[node name="GazeRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+script = ExtResource("2_3a4ce")
+
+[node name="CalibButton" parent="GazeRaycast" instance=ExtResource("4_3a4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+visible = false
+texture = SubResource("ViewportTexture_hd57e")
+
+[node name="Cursor" type="Sprite3D" parent="GazeRaycast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.0511985)
+extra_cull_margin = 16384.0
+pixel_size = 0.05
+no_depth_test = true
+render_priority = 1
+texture = SubResource("GradientTexture2D_3a4ce")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_3a4ce")
+
+[connection signal="is_pressed" from="GazeRaycast/CalibButton" to="." method="_on_calib_button_is_pressed"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

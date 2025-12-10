@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2bfhbv0neb1x"]
+
+[ext_resource type="Texture2D" uid="uid://dglkw67o76eu3" path="res://Resources/debub-texture_albedo.png" id="1"]
+
+[resource]
+render_priority = 1
+no_depth_test = true
+shading_mode = 0
+albedo_texture = ExtResource("1")
+disable_receive_shadows = true
