@@ -1,4 +1,4 @@
-extends Sprite3D
+extends Sprite3D 
 
 @onready var timer: Timer = $Timer
 @onready var timer2: Timer = $Timer2
@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	rot_acm += abs(rot - past_rot)
 	past_rot = rot
 	
-	if rot_acm >= 0.08:
+	if rot_acm >= 0.1:
 		timer.start()
 		rot_acm = 0
 

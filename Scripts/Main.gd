@@ -111,13 +111,16 @@ func _physics_process(delta: float) -> void:
 			match (cal_state):
 				0:
 					interface.display_width = display_width + pitch * 4.0
-					calib_button.label.text = "%2.2f" % interface.display_width
+					calib_button.label.text = "width\n%2.2f" % interface.display_width
 				1:
-					interface.k1 = k1 + pitch * 0.2
-					calib_button.label.text = "%1.3f" % interface.k1
+					interface.iod = iod + pitch * 1.5
+					calib_button.label.text = "iod\n%1.3f" % interface.iod
 				2:
+					interface.k1 = k1 + pitch * 0.2
+					calib_button.label.text = "k1\n%1.3f" % interface.k1
+				3:
 					interface.k2 = k2 + pitch * 0.2
-					calib_button.label.text = "%1.3f" % interface.k2
+					calib_button.label.text = "k2\n%1.3f" % interface.k2
 				_:
 					calibration_done.emit()
 		States.PLAY:
