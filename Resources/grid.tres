@@ -8,5 +8,5 @@ specular_mode = 2
 albedo_texture = ExtResource("1")
 emission_enabled = true
 uv1_scale = Vector3(32, 32, 32)
-uv1_offset = Vector3(0, -1359.032, 0)
+uv1_offset = Vector3(0, -135.31505, 0)
 uv2_offset = Vector3(0, 0.495, 0)

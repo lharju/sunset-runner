@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcjlyl67s0wxe"]
+[gd_scene load_steps=6 format=3 uid="uid://dcjlyl67s0wxe"]
 
 [ext_resource type="Script" uid="uid://dhbl2lqs3jtvk" path="res://Scripts/CalibButton.gd" id="1_vyb28"]
 [ext_resource type="Texture2D" uid="uid://dm8mpeswcxw6s" path="res://Resources/calib_imag_albedo.png" id="2_8dihv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8dihv"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Gradient" id="Gradient_8dihv"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rurgj"]
+gradient = SubResource("Gradient_8dihv")
+width = 1
+height = 1
 
 [node name="CalibButton" type="Sprite3D"]
 no_depth_test = true
@@ -43,9 +51,16 @@ wait_time = 2.0
 one_shot = true
 
 [node name="CalibrationImage" type="Sprite3D" parent="."]
-pixel_size = 0.0041
+pixel_size = 0.0035
 no_depth_test = true
 render_priority = 2
 texture = ExtResource("2_8dihv")
+
+[node name="Sprite3D" type="Sprite3D" parent="CalibrationImage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05915749)
+pixel_size = 12.3055
+no_depth_test = true
+render_priority = 1
+texture = SubResource("GradientTexture2D_rurgj")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

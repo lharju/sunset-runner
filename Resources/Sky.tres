@@ -1,0 +1,15 @@
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://c1jcmlculciew"]
+
+[ext_resource type="Shader" uid="uid://tjkl6m7iug61" path="res://Shaders/Sky.gdshader" id="1_1mb4p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
+shader = ExtResource("1_1mb4p")
+shader_parameter/horizon_color = Color(0.7706665, 0.13999999, 1, 1)
+shader_parameter/horizon_curve = 12.205
+shader_parameter/flare_size = 1.38
+shader_parameter/flare_int = 5.045
+
+[resource]
+resource_local_to_scene = true
+sky_material = SubResource("ShaderMaterial_uu6xs")
+radiance_size = 0

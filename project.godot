@@ -20,6 +20,7 @@ config/icon="uid://btaf0ui4kj4d7"
 
 window/size/viewport_width=2380
 window/size/viewport_height=1080
+window/frame_pacing/android/enable_frame_pacing=false
 window/vsync/vsync_mode=0
 
 [input]
@@ -72,6 +73,8 @@ sensors/enable_magnetometer=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+shading/overrides/force_vertex_shading=true
+vrs/mode=2
 
 [xr]
 

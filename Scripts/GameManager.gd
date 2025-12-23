@@ -15,6 +15,8 @@ var game_state: States = States.MENU
 var _difficulty: int = 0
 var _start_time: int = 0
 
+
+
 func _on_xr_origin_3d_is_hit() -> void:
 	player.next_state = States.MENU
 	game_state = States.MENU

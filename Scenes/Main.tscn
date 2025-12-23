@@ -1,30 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://be2v18ieqet5c"]
+[gd_scene load_steps=16 format=3 uid="uid://be2v18ieqet5c"]
 
 [ext_resource type="Script" uid="uid://bdj7aygik5qe0" path="res://Scripts/GameManager.gd" id="1_jw32o"]
 [ext_resource type="PackedScene" uid="uid://d3ed2d3ucnq8q" path="res://Scenes/Menu.tscn" id="1_v1gob"]
 [ext_resource type="Script" uid="uid://biakqi0qkdj82" path="res://Scripts/ObjectSpawner.gd" id="3_rgh2o"]
-[ext_resource type="Shader" uid="uid://tjkl6m7iug61" path="res://Shaders/Sky.gdshader" id="3_v1gob"]
+[ext_resource type="Sky" uid="uid://c1jcmlculciew" path="res://Resources/Sky.tres" id="3_vy5pj"]
 [ext_resource type="Material" uid="uid://b5bfmus66fpk8" path="res://Resources/grid.tres" id="4_50glp"]
-[ext_resource type="PackedScene" uid="uid://pg23ipdq2j8t" path="res://Scenes/DodgeObject.tscn" id="4_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://drfakj0pu768p" path="res://Scenes/CardboardVR.tscn" id="4_rgh2o"]
 [ext_resource type="Script" uid="uid://dllcyeum6liqg" path="res://Scripts/Grid.gd" id="5_vy5pj"]
-[ext_resource type="Script" uid="uid://cyw6lm3w4ni6e" path="res://Scripts/Screenshot.gd" id="8_50glp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
-shader = ExtResource("3_v1gob")
-shader_parameter/horizon_color = Color(0.7706665, 0.13999999, 1, 1)
-shader_parameter/horizon_curve = 12.205
-shader_parameter/flare_size = 1.38
-shader_parameter/flare_int = 5.045
-
-[sub_resource type="Sky" id="Sky_glv2v"]
-resource_local_to_scene = true
-sky_material = SubResource("ShaderMaterial_uu6xs")
-radiance_size = 0
+[ext_resource type="PackedScene" uid="uid://pg23ipdq2j8t" path="res://Scenes/DodgeObject.tscn" id="8_50glp"]
 
 [sub_resource type="Environment" id="Environment_uu6xs"]
 background_mode = 2
-sky = SubResource("Sky_glv2v")
+sky = ExtResource("3_vy5pj")
 
 [sub_resource type="Gradient" id="Gradient_jw32o"]
 interpolation_mode = 2
@@ -59,7 +46,7 @@ point_count = 2
 script = ExtResource("1_jw32o")
 
 [node name="Menu" parent="." instance=ExtResource("1_v1gob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0071588755, -2.3003561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 
 [node name="Enviroment" type="Node3D" parent="."]
 
@@ -78,6 +65,7 @@ directional_shadow_mode = 0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment"]
 transform = Transform3D(1, 0, 0, 0, 0.622337, 0.7827495, 0, -0.7827495, 0.622337, 0, 8.417982, 3.4753697)
+light_bake_mode = 1
 directional_shadow_mode = 0
 
 [node name="Geometry" type="Node3D" parent="."]
@@ -114,15 +102,8 @@ progress = 4.0
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 display_to_lens = 4.2
 
-[node name="ScreenshotCamera" type="SubViewport" parent="."]
-script = ExtResource("8_50glp")
-
-[node name="Camera3D" type="Camera3D" parent="ScreenshotCamera"]
-transform = Transform3D(1, 0, 0, 0, 0.99556196, -0.09410831, 0, 0.09410831, 0.99556196, 0, 3.015, -10)
-fov = 40.5
-
-[node name="DodgeObject" parent="." instance=ExtResource("4_pbw6q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.268466, 0)
+[node name="DodgeObject" parent="." instance=ExtResource("8_50glp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2885275, 0)
 
 [connection signal="calibrate" from="Menu" to="." method="_on_menu_calibrate"]
 [connection signal="cursor" from="Menu" to="." method="_on_menu_cursor"]
