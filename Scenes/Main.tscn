@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://be2v18ieqet5c"]
+[gd_scene load_steps=17 format=3 uid="uid://be2v18ieqet5c"]
 
 [ext_resource type="Script" uid="uid://bdj7aygik5qe0" path="res://Scripts/GameManager.gd" id="1_jw32o"]
 [ext_resource type="PackedScene" uid="uid://d3ed2d3ucnq8q" path="res://Scenes/Menu.tscn" id="1_v1gob"]
@@ -16,7 +16,7 @@ sky = ExtResource("3_vy5pj")
 [sub_resource type="Gradient" id="Gradient_jw32o"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.42480212, 0.61741424, 1)
-colors = PackedColorArray(0.89, 0.062299993, 0.87620485, 1, 0.974101, 0.34087825, 0.31333587, 1, 1, 0.42666668, 0.13999999, 1)
+colors = PackedColorArray(0.7333602, 0.106800005, 0.89, 1, 0.974101, 0.34087825, 0.31333587, 1, 1, 0.5253334, 0.110000014, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_50glp"]
 gradient = SubResource("Gradient_jw32o")
@@ -34,6 +34,9 @@ size = Vector2(10, 600)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fos0i"]
 size = Vector2(300, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_50glp"]
+size = Vector3(10, 3.5, 1)
 
 [sub_resource type="Curve3D" id="Curve3D_r0du0"]
 _data = {
@@ -91,6 +94,13 @@ script = ExtResource("3_rgh2o")
 [node name="Timer" type="Timer" parent="Geometry/ObjectSpawner"]
 wait_time = 0.5
 
+[node name="ScoreArea" type="Area3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/ScoreArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -4)
+shape = SubResource("BoxShape3D_50glp")
+
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_r0du0")
 
@@ -110,5 +120,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2885275, 0)
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]
 [connection signal="vection" from="Menu" to="." method="_on_menu_vection"]
 [connection signal="timeout" from="Geometry/ObjectSpawner/Timer" to="Geometry/ObjectSpawner" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Geometry/ScoreArea" to="." method="_on_score_area_body_entered"]
 [connection signal="calibration_done" from="Path3D/PathFollow3D/Player" to="." method="_on_player_calibration_done"]
 [connection signal="is_hit" from="Path3D/PathFollow3D/Player" to="." method="_on_xr_origin_3d_is_hit"]

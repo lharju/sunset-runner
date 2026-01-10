@@ -1,7 +1,6 @@
 extends Sprite3D 
 
-@onready var timer: Timer = $Timer
-@onready var timer2: Timer = $Timer2
+@onready var timer: Timer = $Timer 
 
 @onready var label: Label = $SubViewport/Label
 @onready var progress_bar: ProgressBar = $SubViewport/ProgressBar

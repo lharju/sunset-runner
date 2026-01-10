@@ -48,6 +48,11 @@ no_depth_test = true
 render_priority = 1
 texture = SubResource("GradientTexture2D_3a4ce")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="GazeRaycast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0)
+doppler_tracking = 2
+current = true
+
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -55,5 +60,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_3a4ce")
 
 [connection signal="is_pressed" from="GazeRaycast/CalibButton" to="." method="_on_calib_button_is_pressed"]
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

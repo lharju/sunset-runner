@@ -13,14 +13,13 @@ enum States {NONE = 0 , CALIBRATION = 1, MENU = 2, PLAY = 3}
 var game_state: States = States.MENU
 
 var _difficulty: int = 0
-var _start_time: int = 0
 
+var score: int = 0
 
 
 func _on_xr_origin_3d_is_hit() -> void:
 	player.next_state = States.MENU
 	game_state = States.MENU
-	var score: int = int(Time.get_unix_time_from_system()) - _start_time
 	match _difficulty:
 		0:
 			menu.easy.text =  str(score) if score > int(menu.easy.text) else menu.easy.text
@@ -33,7 +32,6 @@ func _on_xr_origin_3d_is_hit() -> void:
 	menu.process_mode = Node.PROCESS_MODE_INHERIT
 	menu.show()
 
-
 func _on_menu_calibrate() -> void:
 	player.next_state = States.CALIBRATION
 	game_state = States.CALIBRATION
@@ -41,9 +39,8 @@ func _on_menu_calibrate() -> void:
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.hide()
 
-
 func _on_menu_play(difficulty: int) -> void:
-	_start_time = int(Time.get_unix_time_from_system())
+	score = 0
 	_difficulty = difficulty
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.hide()
@@ -62,8 +59,9 @@ func _on_player_calibration_done() -> void:
 	player.next_state = States.MENU
 	menu.process_mode = Node.PROCESS_MODE_INHERIT
 	menu.show()
-	
-
 
 func _on_menu_cursor(on: bool) -> void:
 	player.cursor_on = on
+
+func _on_score_area_body_entered(_body: Node3D) -> void:
+	score += 1

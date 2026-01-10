@@ -142,7 +142,3 @@ func _on_calib_button_is_pressed() -> void:
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	is_hit.emit()
-
-
-func _on_area_3d_area_entered(_area: Area3D) -> void:
-	is_hit.emit()
