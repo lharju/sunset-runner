@@ -5,14 +5,30 @@ var dodge_object_scn: PackedScene = preload("res://Scenes/DodgeObject.tscn")
 @export var speed: float = 80
 @export var time: float
 
+var all_positions: Array = []
+var available_positions: Array = []
+func _ready():
+	for i in range(-4, 4, 1):
+		all_positions.append(i)
+
 func _on_timer_timeout() -> void:
 	var object: RigidBody3D = dodge_object_scn.instantiate()
 	object.apply_impulse(Vector3(0,0,speed* 1.5))
-	object.global_position = self.global_position + Vector3(randi_range(-4, 4), 0, 0)
+	
+	if available_positions.size() == 0:
+		available_positions = all_positions.duplicate()
+		available_positions.shuffle()
+		
+	
+	object.global_position = self.global_position + Vector3(available_positions.pop_front(), 0, 0)
 	self.add_child(object)
+	
+	
 
 
 func enable() -> void:
+	
+	
 	timer.wait_time = time
 	timer.start()
 

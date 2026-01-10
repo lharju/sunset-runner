@@ -18,9 +18,6 @@ config/icon="uid://btaf0ui4kj4d7"
 
 [display]
 
-window/size/viewport_width=2380
-window/size/viewport_height=1080
-window/frame_pacing/android/enable_frame_pacing=false
 window/vsync/vsync_mode=0
 
 [input]

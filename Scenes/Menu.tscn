@@ -1,7 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3ed2d3ucnq8q"]
+[gd_scene load_steps=12 format=3 uid="uid://d3ed2d3ucnq8q"]
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://c6fpwvyuo04jt" path="res://Scripts/Menu.gd" id="1_6pedr"]
+[ext_resource type="Script" uid="uid://cofigao63bi46" path="res://RichTextGhost.gd" id="2_syfuq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wfhf6"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_s2c3o"]
+script = ExtResource("2_syfuq")
+metadata/_custom_type_script = "uid://cofigao63bi46"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6pedr"]
 viewport_path = NodePath("SubViewport")
@@ -24,6 +32,28 @@ viewport_path = NodePath("SubViewport")
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_6pedr")
 
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_wfhf6")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+disable_3d = true
+transparent_bg = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite3D/SubViewport"]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[ghost freq=5.0 span=10.0]SUNSET RUNNER[/ghost]"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_s2c3o")]
+
 [node name="Title" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5404718, 0)
 text = "Sunset Runner"
@@ -43,6 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 texture = SubResource("ViewportTexture_6pedr")
 text = "Easy"
 
+[node name="SubViewport" parent="Play/PlayEasy" index="0"]
+disable_3d = true
+
 [node name="Label" parent="Play/PlayEasy/SubViewport" index="1"]
 text = "Easy"
 
@@ -50,6 +83,9 @@ text = "Easy"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 texture = SubResource("ViewportTexture_s2c3o")
 text = "Medium"
+
+[node name="SubViewport" parent="Play/PlayMedium" index="0"]
+disable_3d = true
 
 [node name="Label" parent="Play/PlayMedium/SubViewport" index="1"]
 text = "Medium"

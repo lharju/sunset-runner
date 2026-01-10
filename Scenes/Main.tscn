@@ -57,11 +57,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 environment = SubResource("Environment_uu6xs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment"]
-transform = Transform3D(1, 0, 0, 0, -0.99833477, 0.057686105, 0, -0.057686105, -0.99833477, 0, 13.042982, 0)
+transform = Transform3D(1, 0, 0, 0, -0.99778295, 0.066552624, 0, -0.066552624, -0.99778295, -0.35055542, 16.767828, 0)
 light_color = Color(1, 0.42745098, 0.14117648, 1)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_angular_distance = 10.0
+light_angular_distance = 15.0
 light_specular = 0.0
 light_bake_mode = 1
 directional_shadow_mode = 0
@@ -114,6 +114,11 @@ display_to_lens = 4.2
 
 [node name="DodgeObject" parent="." instance=ExtResource("8_50glp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2885275, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.65, 0)
 
 [connection signal="calibrate" from="Menu" to="." method="_on_menu_calibrate"]
 [connection signal="cursor" from="Menu" to="." method="_on_menu_cursor"]
