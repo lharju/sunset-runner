@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://br4l33upjtwmr"]
+
+[ext_resource type="Texture2D" uid="uid://ctuwfnb65eaxt" path="res://Resources/grid_albedo.png" id="1_s8joh"]
+
+[resource]
+shading_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("1_s8joh")
+uv1_scale = Vector3(42, 42, 42)
+uv1_offset = Vector3(0, -1228.4042, 0)
+stencil_flags = 2

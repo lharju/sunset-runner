@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b5bfmus66fpk8"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b5bfmus66fpk8"]
 
 [ext_resource type="Texture2D" uid="uid://ctuwfnb65eaxt" path="res://Resources/grid_albedo.png" id="1"]
 
@@ -6,7 +6,6 @@
 shading_mode = 2
 specular_mode = 2
 albedo_texture = ExtResource("1")
-emission_enabled = true
-uv1_scale = Vector3(32, 32, 32)
-uv1_offset = Vector3(0, -0.9202429, 0)
-uv2_offset = Vector3(0, 0.495, 0)
+uv1_scale = Vector3(42, 42, 42)
+uv1_offset = Vector3(0, -1220.2545, 0)
+stencil_flags = 2

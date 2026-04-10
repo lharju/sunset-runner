@@ -1,26 +1,16 @@
-[gd_resource type="Sky" load_steps=5 format=3 uid="uid://c1jcmlculciew"]
+[gd_resource type="Sky" format=3 uid="uid://c1jcmlculciew"]
 
 [ext_resource type="Shader" uid="uid://tjkl6m7iug61" path="res://Shaders/Sky.gdshader" id="1_1mb4p"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1mb4p"]
-noise_type = 2
-fractal_type = 2
-cellular_distance_function = 2
-domain_warp_enabled = true
-domain_warp_type = 2
-domain_warp_fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1mb4p"]
-noise = SubResource("FastNoiseLite_1mb4p")
-seamless = true
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
 shader = ExtResource("1_1mb4p")
-shader_parameter/horizon_tint = Color(0.74998295, 0.5450415, 0.95436937, 1)
-shader_parameter/horizon_curve = 12.205
-shader_parameter/flare_size = 1.38
-shader_parameter/flare_int = 5.045
-shader_parameter/horizon_noise = SubResource("NoiseTexture2D_1mb4p")
+shader_parameter/horizon_top = Color(0.79505193, 0.5436238, 0.16300416, 1)
+shader_parameter/horizon_bot = Color(0.7019608, 0, 0.7019608, 1)
+shader_parameter/flare_clr = Color(0, 0.9986296, 0.928272, 1)
+shader_parameter/horizon_curve = 6.0
+shader_parameter/flare_size = 0.6
+shader_parameter/flare_int = 10.0
+shader_parameter/lines = false
 
 [resource]
 resource_local_to_scene = true

@@ -11,11 +11,14 @@ var rot_acm: float = 0
 signal is_pressed
 
 func _physics_process(_delta: float) -> void:
+	if self.visible == false:
+		rot_acm = 0
+		return
 	var rot: float = self.global_basis.z.dot(Vector3.UP)
 	rot_acm += abs(rot - past_rot)
 	past_rot = rot
 	
-	if rot_acm >= 0.1:
+	if rot_acm >= 0.15:
 		timer.start()
 		rot_acm = 0
 

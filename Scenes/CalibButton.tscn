@@ -47,11 +47,11 @@ vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
 process_callback = 0
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
 [node name="CalibrationImage" type="Sprite3D" parent="."]
-pixel_size = 0.0035
+pixel_size = 0.0025
 no_depth_test = true
 render_priority = 2
 texture = ExtResource("2_8dihv")

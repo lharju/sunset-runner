@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cme4oib8nnspy"]
 
-[ext_resource type="PackedScene" uid="uid://72avkwlordxr" path="res://Models/Untitled.glb" id="1_waoyn"]
+[ext_resource type="PackedScene" uid="uid://72avkwlordxr" path="res://Models/LightCycle.glb" id="1_waoyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_waoyn"]
 albedo_color = Color(0, 0, 0, 1)

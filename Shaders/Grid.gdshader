@@ -1,22 +1,17 @@
 shader_type spatial;
-render_mode unshaded, ambient_light_disabled;
+render_mode shadows_disabled, unshaded;
 
-uniform vec3 grid_color: source_color = vec3(0.,0.,1.);
-uniform float density = 1000.0;
+uniform sampler2D grid_tex : source_color;
 
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
+uniform vec3 color : source_color = vec3(1.0);
+uniform float grid_int = 32.0;
+uniform float blur_int = 64.0;
+uniform float freq = 1.0;
+uniform float scale = 512.;
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-
-	float str = clamp(pow(sin(UV.x * density), 30.) + pow(sin(UV.y * density),30.), 0.0, 1.0);
-	ALBEDO = floor(sin(UV.x * density) + 0.01) * grid_color;
-
+	vec2 uv = (UV - vec2(0.5)) * scale + vec2(0.0, - TIME * freq);
+	float blur = length(VERTEX) / blur_int;
+	
+	ALBEDO = color * pow(texture(grid_tex, uv).r, grid_int);//pow(max(sin(uv.x), sin(uv.y)), grid_int ); 1. * (1.0 - blur);
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}

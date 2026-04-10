@@ -8,7 +8,7 @@ var dodge_object_scn: PackedScene = preload("res://Scenes/DodgeObject.tscn")
 var all_positions: Array = []
 var available_positions: Array = []
 func _ready():
-	for i in range(-4, 4, 1):
+	for i in range(-4, 5, 1):
 		all_positions.append(i)
 
 func _on_timer_timeout() -> void:
@@ -20,8 +20,8 @@ func _on_timer_timeout() -> void:
 		available_positions.shuffle()
 		
 	
-	object.global_position = self.global_position + Vector3(available_positions.pop_front(), 0, 0)
 	self.add_child(object)
+	object.global_position = self.global_position + Vector3(available_positions.pop_front(), 0, 0)
 	
 	
 

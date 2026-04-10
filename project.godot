@@ -8,17 +8,35 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Sunset Runner"
 run/main_scene="uid://be2v18ieqet5c"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="uid://btaf0ui4kj4d7"
 
+[audio]
+
+buses/default_bus_layout="uid://cyiuomki4oa7j"
+
+[autoload]
+
+XRInterfaceManager="*uid://jd51p1p6mquy"
+
 [display]
 
+window/size/viewport_width=2380
+window/size/viewport_height=1080
 window/vsync/vsync_mode=0
+
+[gui]
+
+theme/custom="uid://pfljj2xq8p2w"
 
 [input]
 

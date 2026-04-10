@@ -58,11 +58,13 @@ func _ready() -> void:
 		gaze_raycast.reparent(xr_camera_3d)
 		camera_3d.free()
 		
-		interface = XRServer.find_interface("Native mobile") as MobileVRInterface
-		set_interface_properties()
-		interface.initialize()
-		if interface and interface.initialize():
-			get_viewport().use_xr = true
+		interface = XRInterfaceManager.interface
+			
+		#interface = XRServer.find_interface("Native mobile") as MbileVRInterface
+		#set_interface_properties()
+		#interface.initialize()
+		#if interface and interface.initialize():
+		#	get_viewport().use_xr = true
 
 func _physics_process(delta: float) -> void:
 	if OS.has_feature("pc"):
@@ -77,7 +79,8 @@ func _physics_process(delta: float) -> void:
 		
 	var pitch: float = gaze_raycast.global_basis.z.dot(Vector3.UP)
 	var roll: float = gaze_raycast.global_basis.y.dot(Vector3.RIGHT)
-	
+
+
 	match next_state:
 		States.NONE:
 			pass
@@ -92,8 +95,7 @@ func _physics_process(delta: float) -> void:
 		States.PLAY:
 			calib_button.disable()
 			game_state = next_state
-
-		
+	
 	next_state = States.NONE
 		
 	
@@ -122,6 +124,7 @@ func _physics_process(delta: float) -> void:
 					interface.k2 = k2 + pitch * 0.2
 					calib_button.label.text = "k2\n%1.3f" % interface.k2
 				_:
+					XRInterfaceManager.save_properties()
 					calibration_done.emit()
 		States.PLAY:
 			if roll < 0.05:
@@ -130,9 +133,6 @@ func _physics_process(delta: float) -> void:
 				path.progress_ratio = move_toward(path.progress_ratio, 1, abs(roll) * delta * 2.0)
 		States.MENU:
 			path.progress_ratio = move_toward(path.progress_ratio, 0.5,  delta * 0.25)
-		
-
-
 
 func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
