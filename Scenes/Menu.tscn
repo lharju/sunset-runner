@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://c6fpwvyuo04jt" path="res://Scripts/Menu.gd" id="1_6pedr"]
-[ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Resources/RichTextGhost.gd" id="2_syfuq"]
+[ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Scripts/RichTextGhost.gd" id="2_syfuq"]
+[ext_resource type="Script" uid="uid://cibkx1flfd24i" path="res://Scripts/debug_text.gd" id="3_s2c3o"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_wfhf6"]
 viewport_path = NodePath("Title/SubViewport")
@@ -10,9 +11,6 @@ viewport_path = NodePath("Title/SubViewport")
 [sub_resource type="RichTextEffect" id="RichTextEffect_s2c3o"]
 script = ExtResource("2_syfuq")
 metadata/_custom_type_script = "uid://cofigao63bi46"
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_syfuq"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
 viewport_path = NodePath("SubViewport")
@@ -27,6 +25,9 @@ viewport_path = NodePath("SubViewport")
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aobxe"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Menu" type="Node3D" unique_id=2102618]
@@ -63,6 +64,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3323812, 0)
 text = "Dodge oncoming objects
 Move by tilting your head left/right"
 
+[node name="DebugText" type="Label3D" parent="Title" unique_id=2118199116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.225708, -0.9717517, 0)
+script = ExtResource("3_s2c3o")
+
 [node name="A" type="Node3D" parent="." unique_id=226967261]
 transform = Transform3D(0.3, 0, 0, 0, 0.23254624, 0.18953165, 0, -0.18953165, 0.23254624, 0, 1.2213188, -0.8885634)
 
@@ -72,21 +77,21 @@ text = "Settings"
 
 [node name="Calibrate" parent="A/Settings" unique_id=574086849 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_syfuq")
+texture = SubResource("ViewportTexture_s2c3o")
 text = "Calibrate"
 
-[node name="Label" parent="A/Settings/Calibrate/SubViewport" index="1"]
+[node name="Label" parent="A/Settings/Calibrate/SubViewport" parent_id_path=PackedInt32Array(574086849, 70064913) index="1" unique_id=267439897]
 text = "Calibrate"
 
 [node name="LowVection" parent="A/Settings" unique_id=1284566107 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_s2c3o")
+texture = SubResource("ViewportTexture_ma218")
 text = "Low Vection"
 
-[node name="Label" parent="A/Settings/LowVection/SubViewport" index="1"]
+[node name="Label" parent="A/Settings/LowVection/SubViewport" parent_id_path=PackedInt32Array(1284566107, 70064913) index="1" unique_id=267439897]
 text = "Low Vection"
 
-[node name="CheckBox" type="CheckBox" parent="A/Settings/LowVection/SubViewport" index="2" unique_id=271210048]
+[node name="CheckBox" type="CheckBox" parent="A/Settings/LowVection/SubViewport" parent_id_path=PackedInt32Array(1284566107, 70064913) index="2" unique_id=271210048]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -101,13 +106,13 @@ button_mask = 0
 
 [node name="Music" parent="A/Settings" unique_id=427707089 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_ma218")
+texture = SubResource("ViewportTexture_idohh")
 text = "Cursor"
 
-[node name="Label" parent="A/Settings/Music/SubViewport" index="1"]
+[node name="Label" parent="A/Settings/Music/SubViewport" parent_id_path=PackedInt32Array(427707089, 70064913) index="1" unique_id=267439897]
 text = "Music"
 
-[node name="CheckBox" type="CheckBox" parent="A/Settings/Music/SubViewport" index="2" unique_id=856547208]
+[node name="CheckBox" type="CheckBox" parent="A/Settings/Music/SubViewport" parent_id_path=PackedInt32Array(427707089, 70064913) index="2" unique_id=856547208]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -125,32 +130,32 @@ text = "Play"
 
 [node name="PlayEasy" parent="A/Play" unique_id=1643717761 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_idohh")
+texture = SubResource("ViewportTexture_3jcrr")
 text = "Easy"
 
-[node name="SubViewport" parent="A/Play/PlayEasy" index="0"]
+[node name="SubViewport" parent="A/Play/PlayEasy" index="0" unique_id=70064913]
 disable_3d = true
 
-[node name="Label" parent="A/Play/PlayEasy/SubViewport" index="1"]
+[node name="Label" parent="A/Play/PlayEasy/SubViewport" index="1" unique_id=267439897]
 text = "Easy"
 
 [node name="PlayMedium" parent="A/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_3jcrr")
+texture = SubResource("ViewportTexture_aobxe")
 text = "Medium"
 
-[node name="SubViewport" parent="A/Play/PlayMedium" index="0"]
+[node name="SubViewport" parent="A/Play/PlayMedium" index="0" unique_id=70064913]
 disable_3d = true
 
-[node name="Label" parent="A/Play/PlayMedium/SubViewport" index="1"]
+[node name="Label" parent="A/Play/PlayMedium/SubViewport" index="1" unique_id=267439897]
 text = "Medium"
 
 [node name="PlayHard" parent="A/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_aobxe")
+texture = SubResource("ViewportTexture_ab40c")
 text = "Hard"
 
-[node name="Label" parent="A/Play/PlayHard/SubViewport" index="1"]
+[node name="Label" parent="A/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
 text = "Hard"
 
 [node name="Highscores" type="Label3D" parent="A" unique_id=2027352177]

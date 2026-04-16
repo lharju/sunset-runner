@@ -1,81 +1,30 @@
-// NOTE: Shader automatically converted from Godot Engine 4.5.1.stable's StandardMaterial3D.
-
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_disabled, vertex_lighting;
+render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
 
-uniform vec4 albedo : source_color;
+
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
-uniform ivec2 albedo_texture_size;
-uniform float point_size : hint_range(0.1, 128.0, 0.1);
+uniform vec3 roadmark_color : source_color;
 
-uniform float roughness : hint_range(0.0, 1.0);
-uniform sampler2D texture_metallic : hint_default_white, filter_nearest_mipmap, repeat_enable;
-uniform vec4 metallic_texture_channel;
-uniform sampler2D texture_roughness : hint_roughness_r, filter_nearest_mipmap, repeat_enable;
+global uniform vec4 color1 : source_color;
+global uniform vec4 color2 : source_color;
+global uniform vec4 color3 : source_color;
 
-uniform float specular : hint_range(0.0, 1.0, 0.01);
-uniform float metallic : hint_range(0.0, 1.0, 0.01);
-
-uniform sampler2D texture_emission : source_color, hint_default_black, filter_nearest_mipmap, repeat_enable;
-uniform vec4 emission : source_color;
-uniform float emission_energy : hint_range(0.0, 100.0, 0.01);
-varying vec3 uv1_triplanar_pos;
-
-uniform float uv1_blend_sharpness : hint_range(0.0, 150.0, 0.001);
-varying vec3 uv1_power_normal;
-
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-
-void vertex() {
-	// Shading Mode: Per Vertex
-	ROUGHNESS = roughness;
-/*
-
-	vec3 normal = NORMAL;
-
-	TANGENT = vec3(0.0, 0.0, -1.0) * abs(normal.x);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.y);
-	TANGENT += vec3(1.0, 0.0, 0.0) * abs(normal.z);
-	TANGENT = normalize(TANGENT);
-	BINORMAL = vec3(0.0, 1.0, 0.0) * abs(normal.x);
-	BINORMAL += vec3(0.0, 0.0, -1.0) * abs(normal.y);
-	BINORMAL += vec3(0.0, 1.0, 0.0) * abs(normal.z);
-	BINORMAL = normalize(BINORMAL);
-*/
-
-	// UV1 Triplanar: Enabled
-	uv1_power_normal = pow(abs(NORMAL), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = VERTEX * uv1_scale + uv1_offset;
-	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
-	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
-}
-
-
-vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
-	vec4 samp = vec4(0.0);
-	samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
-	samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
-	samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
-	return samp;
-}
+uniform float roadmark_density = 64.;
+uniform float roadmark_freq = 3.0;
 
 void fragment() {
-	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	//ALBEDO = vec3(1.0) * sign(cos(UV.x * 2. - TIME * 2.0)) * clamp(sign(sin(UV.y * PI) - 0.7), 0.0, 1.0);
 
-	float metallic_tex = dot(triplanar_texture(texture_metallic, uv1_power_normal, uv1_triplanar_pos), metallic_texture_channel);
-	METALLIC = metallic_tex * metallic;
-	SPECULAR = specular;
+	
+	// Roadmarks
+	float x = sign(cos(UV.x * roadmark_density - TIME * roadmark_freq));
+	float y = clamp(sign(sin(UV.y * PI) -0.995),0.0, 1.0);
+	float roadmark = clamp(x * y, 0.0, 1.0);
+	
+	// R
+	vec3 gradient = mix(color1 * 3.0, color2, clamp(pow(UV.x + 0.55, 4.)  , 0.0, 1.0)).rgb;
+	
+	ALBEDO = mix(gradient, color3.rgb, roadmark);
 
-	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
-	float roughness_tex = dot(triplanar_texture(texture_roughness, uv1_power_normal, uv1_triplanar_pos), roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
-
-	// Emission: Enabled
-	vec3 emission_tex = triplanar_texture(texture_emission, uv1_power_normal, uv1_triplanar_pos).rgb;
-	// Emission Operator: Add
-	EMISSION = (emission.rgb + emission_tex) * emission_energy;
+	
 }

@@ -2,15 +2,40 @@
 
 [ext_resource type="Shader" uid="uid://tjkl6m7iug61" path="res://Shaders/Sky.gdshader" id="1_1mb4p"]
 
+[sub_resource type="Gradient" id="Gradient_1mb4p"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.36363637, 0.37878788, 0.43939394)
+colors = PackedColorArray(0, 0, 0, 1, 0.089999974, 0.8028333, 1, 1, 0.6073828, 0.001131939, 0.7413391, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 66
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xsj0c"]
+gradient = SubResource("Gradient_1mb4p")
+width = 256
+height = 2
+fill_from = Vector2(1, 0.061965812)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1mb4p"]
+frequency = 0.045
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xsj0c"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_1mb4p")
+seamless = true
+seamless_blend_skirt = 0.5
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
 shader = ExtResource("1_1mb4p")
-shader_parameter/horizon_top = Color(0.79505193, 0.5436238, 0.16300416, 1)
-shader_parameter/horizon_bot = Color(0.7019608, 0, 0.7019608, 1)
-shader_parameter/flare_clr = Color(0, 0.9986296, 0.928272, 1)
-shader_parameter/horizon_curve = 6.0
-shader_parameter/flare_size = 0.6
-shader_parameter/flare_int = 10.0
+shader_parameter/horizon_color_tex = SubResource("GradientTexture2D_xsj0c")
+shader_parameter/horizon_curve = 3.965
+shader_parameter/flare_size = 2.405
+shader_parameter/flare_int = 16.0
 shader_parameter/lines = false
+shader_parameter/noise = SubResource("NoiseTexture3D_xsj0c")
 
 [resource]
 resource_local_to_scene = true

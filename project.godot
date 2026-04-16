@@ -91,6 +91,25 @@ textures/vram_compression/import_etc2_astc=true
 shading/overrides/force_vertex_shading=true
 vrs/mode=2
 
+[shader_globals]
+
+road_movement={
+"type": "int",
+"value": 0
+}
+color1={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+color2={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+color3={
+"type": "color",
+"value": Color(0, 0, 0, 1)
+}
+
 [xr]
 
 openxr/default_action_map=""

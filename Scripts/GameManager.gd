@@ -13,22 +13,50 @@ extends Node3D
 enum States {NONE = 0 , CALIBRATION = 1, MENU = 2, PLAY = 3}
 var game_state: States = States.MENU
 
-var _difficulty: int = 0
+var difficulty: int = 0
 
 var score: int = 0
+var highscore: ConfigFile
+const highscore_path: String = "user://highscores.cfg"
 
+
+func _ready() -> void:
+	highscore = ConfigFile.new()
+	
+	if FileAccess.file_exists(highscore_path):
+		highscore.load(highscore_path)
+	else:
+		highscore.set_value("highscores", "easy", 0)
+		highscore.set_value("highscores", "medium", 0)
+		highscore.set_value("highscores", "hard", 0)
+		highscore.save(highscore_path)
+		
+		
+	menu.easy.text = str(highscore.get_value("highscores", "easy"))
+	menu.medium.text = str(highscore.get_value("highscores", "medium"))
+	menu.hard.text = str(highscore.get_value("highscores", "hard"))
+		
 
 func _on_xr_origin_3d_is_hit() -> void:
 	player.cursor_on = true
 	player.next_state = States.MENU
 	game_state = States.MENU
-	match _difficulty:
+	match difficulty:
 		0:
-			menu.easy.text = str(score) if score > int(menu.easy.text) else menu.easy.text
+			if score > highscore.get_value("highscores", "easy"):
+				menu.easy.text = str(score)
+				highscore.set_value("highscores", "easy", score)
+				highscore.save(highscore_path)
 		1:
-			menu.medium.text = str(score) if score > int(menu.medium.text) else menu.medium.text
+			if score > highscore.get_value("highscores", "medium"):
+				menu.medium.text = str(score)
+				highscore.set_value("highscores", "medium", score)
+				highscore.save(highscore_path)
 		2:
-			menu.hard.text =  str(score) if score > int(menu.hard.text) else menu.hard.text
+			if score > highscore.get_value("highscores", "hard"):
+				menu.hard.text = str(score)
+				highscore.set_value("highscores", "hard", score)
+				highscore.save(highscore_path)
 	
 	object_spawner.disable()
 	menu.process_mode = Node.PROCESS_MODE_INHERIT
@@ -41,10 +69,10 @@ func _on_menu_calibrate() -> void:
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.hide()
 
-func _on_menu_play(difficulty: int) -> void:
+func _on_menu_play(_difficulty: int) -> void:
 	player.cursor_on = false
 	score = 0
-	_difficulty = difficulty
+	difficulty = _difficulty
 	menu.process_mode = Node.PROCESS_MODE_DISABLED
 	menu.hide()
 	

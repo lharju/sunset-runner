@@ -1,39 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://drfakj0pu768p"]
+[gd_scene format=3 uid="uid://drfakj0pu768p"]
 
 [ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="1_fdbg2"]
 [ext_resource type="Script" uid="uid://bkukhu46m616y" path="res://Scripts/ray_cast_3d.gd" id="2_3a4ce"]
 [ext_resource type="PackedScene" uid="uid://dcjlyl67s0wxe" path="res://Scenes/CalibButton.tscn" id="4_3a4ce"]
 [ext_resource type="Texture2D" uid="uid://dcrbbkdbtu64r" path="res://Resources/reticle.png" id="4_hd57e"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hd57e"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_3a4ce"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3a4ce"]
 size = Vector3(0.6, 1, 0.6)
 
-[node name="CardBoardVR" type="XROrigin3D"]
+[node name="CardBoardVR" type="XROrigin3D" unique_id=2074690412]
 current = true
 script = ExtResource("1_fdbg2")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1419431261]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="XRCamera3D" type="XRCamera3D" parent="."]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=512364818]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
 
-[node name="GazeRaycast" type="RayCast3D" parent="."]
+[node name="GazeRaycast" type="RayCast3D" parent="." unique_id=1953335127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 target_position = Vector3(0, 0, -5)
 collision_mask = 2
 script = ExtResource("2_3a4ce")
 
-[node name="CalibButton" parent="GazeRaycast" instance=ExtResource("4_3a4ce")]
+[node name="CalibButton" parent="GazeRaycast" unique_id=785746994 instance=ExtResource("4_3a4ce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 visible = false
-texture = SubResource("ViewportTexture_hd57e")
+texture = SubResource("ViewportTexture_3a4ce")
 
-[node name="Cursor" type="Sprite3D" parent="GazeRaycast"]
+[node name="Cursor" type="Sprite3D" parent="GazeRaycast" unique_id=2130667474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9012606)
 extra_cull_margin = 16384.0
 pixel_size = 0.0001
@@ -41,13 +41,13 @@ no_depth_test = true
 render_priority = 1
 texture = ExtResource("4_hd57e")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="GazeRaycast"]
+[node name="AudioListener3D" type="AudioListener3D" parent="GazeRaycast" unique_id=867651595]
 doppler_tracking = 2
 current = true
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2044610234]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1793921975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_3a4ce")
 

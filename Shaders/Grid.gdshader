@@ -1,17 +1,20 @@
 shader_type spatial;
-render_mode shadows_disabled, unshaded;
+render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
 
-uniform sampler2D grid_tex : source_color;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
 
-uniform vec3 color : source_color = vec3(1.0);
-uniform float grid_int = 32.0;
-uniform float blur_int = 64.0;
-uniform float freq = 1.0;
-uniform float scale = 512.;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+
+global uniform vec4 color1 : source_color;
+global uniform vec4 color2 : source_color;
+global uniform vec4 color3 : source_color;
 
 void fragment() {
-	vec2 uv = (UV - vec2(0.5)) * scale + vec2(0.0, - TIME * freq);
-	float blur = length(VERTEX) / blur_int;
-	
-	ALBEDO = color * pow(texture(grid_tex, uv).r, grid_int);//pow(max(sin(uv.x), sin(uv.y)), grid_int ); 1. * (1.0 - blur);
+	vec2 base_uv = UV * uv1_scale.xy + uv1_offset.xy + vec2(0.0, -TIME);
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = color3.rgb * albedo_tex.rgb;
+
 }

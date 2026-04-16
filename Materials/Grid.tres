@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://br4l33upjtwmr"]
 
-[ext_resource type="Texture2D" uid="uid://ctuwfnb65eaxt" path="res://Resources/grid_albedo.png" id="1_s8joh"]
+[ext_resource type="Texture2D" uid="uid://bycybxibm70qh" path="res://Materials/new_compressed_texture_2d.tres" id="1_s8joh"]
 
 [resource]
 shading_mode = 2

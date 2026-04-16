@@ -21,7 +21,7 @@
 	],
 	"label": "Graph",
 	"longdesc": "",
-	"name": "@Node@838",
+	"name": "_Node_838",
 	"node_position": {
 		"x": 0.0,
 		"y": 0.0
@@ -34,7 +34,7 @@
 			},
 			"name": "Material",
 			"node_position": {
-				"x": 600.0,
+				"x": 560.0,
 				"y": -40.0
 			},
 			"parameters": {
@@ -52,7 +52,7 @@
 				"metallic": 0.0,
 				"normal": 1.0,
 				"roughness": 0.0,
-				"size": 11,
+				"size": 11.0,
 				"sss": 1.0
 			},
 			"seed_int": 0,
@@ -65,7 +65,7 @@
 				"y": -40.0
 			},
 			"parameters": {
-				"mix": 2,
+				"mix": 2.0,
 				"x_scale": 4.0,
 				"x_wave": 0.0,
 				"y_scale": 4.0,
@@ -125,9 +125,9 @@
 						{
 							"a": 1.0,
 							"b": 1.0,
-							"g": 0.686274528503418,
-							"pos": 0.0743243243243243,
-							"r": 0.0
+							"g": 1.0,
+							"pos": 0.0743243239308132,
+							"r": 1.0
 						}
 					],
 					"type": "Gradient"
