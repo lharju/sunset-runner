@@ -36,15 +36,6 @@ var cursor_on: bool = true:
 signal is_hit()
 signal calibration_done()
 
-func set_interface_properties():
-	interface.display_to_lens = display_to_lens
-	interface.display_width = display_width
-	interface.eye_height = eye_height
-	interface.iod = iod
-	interface.k1 = k1
-	interface.k2 = k2
-	interface.oversample = oversample
-
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -57,14 +48,7 @@ func _ready() -> void:
 		xr_camera_3d.current = true
 		gaze_raycast.reparent(xr_camera_3d)
 		camera_3d.free()
-		
 		interface = XRInterfaceManager.interface
-			
-		#interface = XRServer.find_interface("Native mobile") as MbileVRInterface
-		#set_interface_properties()
-		#interface.initialize()
-		#if interface and interface.initialize():
-		#	get_viewport().use_xr = true
 
 func _physics_process(delta: float) -> void:
 	if OS.has_feature("pc"):

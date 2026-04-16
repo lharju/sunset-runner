@@ -82,8 +82,8 @@ func _on_menu_play(_difficulty: int) -> void:
 	$StartTimer.start()
 	await $StartTimer.timeout
 	
-	object_spawner.speed = 60 + 30 * difficulty
-	object_spawner.time = 0.8 - 0.2 * difficulty
+	object_spawner.speed = 80 + 15 * difficulty
+	object_spawner.time = 1.0 - 0.3 * difficulty
 	object_spawner.enable()
 
 func _on_menu_vection(low: bool) -> void:

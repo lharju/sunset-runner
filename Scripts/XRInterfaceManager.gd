@@ -7,7 +7,6 @@ var config: ConfigFile = null
 const config_path: String = "user://xr_interface_properties.cfg" 
 
 func save_properties():
-	config = ConfigFile.new()
 	config.set_value("config", "display_to_lens", interface.display_to_lens)
 	config.set_value("config", "display_width", interface.display_width)
 	config.set_value("config", "iod", interface.iod)
@@ -16,7 +15,6 @@ func save_properties():
 	config.save(config_path)
 	
 func load_properties():
-	config = ConfigFile.new()
 	config.load(config_path)
 	interface.display_to_lens	= config.get_value("config", "display_to_lens", 4.0)
 	interface.display_width		= config.get_value("config", "display_width", 14.5)
@@ -31,14 +29,9 @@ func _ready() -> void:
 		return
 	if OS.has_feature("android"):
 		pass
-	if OS.has_feature("iOS"):
-		return
-	# Testing file access
-	# OS.request_permissions()
-	
+	if OS.has_feature("ios"):
+		pass
 
-	
-	
 	# Init the XR interface
 	interface = XRServer.find_interface("Native mobile") as MobileVRInterface
 	interface.initialize()
@@ -47,13 +40,10 @@ func _ready() -> void:
 	else:
 		# HACK should handle failure to init interface
 		return
-		
 	
-
-	# Load config file if it exists, else create it with default values 
+	# Load config file if it exists, else create it with default values
+	config = ConfigFile.new()
 	if FileAccess.file_exists(config_path):
 		load_properties()
 	else:
 		save_properties()
-	
-		

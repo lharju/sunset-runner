@@ -89,9 +89,9 @@ size = Vector3(10, 3.5, 1)
 script = ExtResource("1_jw32o")
 
 [node name="ShaderGlobals" type="ShaderGlobalsOverride" parent="." unique_id=794680198]
-params/color1 = Color(1, 0.6248094, 0.30409095, 1)
-params/color2 = Color(0.61960787, 0.30980393, 1, 1)
-params/color3 = Color(6.0644747e-06, 0.61333275, 0.43703985, 1)
+params/color1 = Color(0.7933289, 0.42945513, 0, 1)
+params/color2 = Color(0.55676615, 0.04457993, 0.60915935, 1)
+params/color3 = Color(0, 0.5473388, 0.8350875, 1)
 params/road_movement = 1
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="." unique_id=916895948]
@@ -170,7 +170,7 @@ shape = SubResource("BoxShape3D_50glp")
 transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 26719.906)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=549080432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.350648, 96.82285)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.350648, -4.904129)
 fov = 60.0
 
 [connection signal="calibration_done" from="Path3D/PathFollow3D/Player" to="." method="_on_player_calibration_done"]
