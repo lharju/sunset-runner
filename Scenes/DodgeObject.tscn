@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://pg23ipdq2j8t"]
+[gd_scene format=3 uid="uid://pg23ipdq2j8t"]
 
 [ext_resource type="Script" uid="uid://lbcqo4fj8ur6" path="res://Scripts/DodgeObject.gd" id="1_vjvoq"]
 [ext_resource type="PackedScene" uid="uid://cme4oib8nnspy" path="res://Scenes/LightCycle.tscn" id="2_hjyyc"]
@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8au1"]
 size = Vector3(1, 1.3496094, 3.0249023)
 
-[node name="DodgeObject" type="RigidBody3D"]
+[node name="DodgeObject" type="RigidBody3D" unique_id=1189320309]
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true
@@ -16,13 +16,13 @@ axis_lock_angular_z = true
 gravity_scale = 0.0
 script = ExtResource("1_vjvoq")
 
-[node name="LightCycle" parent="." instance=ExtResource("2_hjyyc")]
+[node name="LightCycle" parent="." unique_id=249808773 instance=ExtResource("2_hjyyc")]
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=160678978]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6748047, 0.01586914)
 shape = SubResource("BoxShape3D_n8au1")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1193308156]
 stream = ExtResource("3_jdcnq")
 autoplay = true
 bus = &"SFX"

@@ -49,6 +49,6 @@ void sky() {
 	//COLOR = vec3(1.0) * (acos(dot(normalize(LIGHT0_DIRECTION.zy), normalize(EYEDIR.zy)))) ;
 	COLOR = vec3(1.0) * lines_str;
 	//COLOR = texture(noise, EYEDIR + vec3(0.0, 0.3, 0.0) * TIME).rgb;
-	COLOR = (mix(sun_color, horizon_color * pow(a, 0.1), sun_str) + pow(flare, flare_int) * color1.rgb)* (1.0 - 0.08 * (sin(EYEDIR.y * 300.0 + TIME * 16.) * 0.5 + 0.5));
+	COLOR = (mix(sun_color, horizon_color * pow(a, 0.1), sun_str) + pow(flare, flare_int) * color1.rgb)* (1.0 - 0.08 * (sin(EYEDIR.y * 500.0 + TIME * 16.) * 0.5 + 0.5));
 
 }

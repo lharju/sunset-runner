@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://drfakj0pu768p" path="res://Scenes/CardboardVR.tscn" id="4_rgh2o"]
 [ext_resource type="Shader" uid="uid://6n6u2jtrxl2o" path="res://Shaders/Grid.gdshader" id="4_vy5pj"]
 [ext_resource type="Texture2D" uid="uid://bn5ei7u4lplil" path="res://Materials/grid_colorize_2.png" id="7_bmxlf"]
-[ext_resource type="Shader" uid="uid://cs5vp4r7wcrnb" path="res://Shaders/Road.gdshader" id="7_vy5pj"]
+[ext_resource type="Material" uid="uid://cxhgfnm25h77g" path="res://Resources/Road.tres" id="8_4kpch"]
 [ext_resource type="AudioStream" uid="uid://d4cnh60477a8v" path="res://Resources/SunsetRunner_session.wav" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://cme4oib8nnspy" path="res://Scenes/LightCycle.tscn" id="9_vy5pj"]
+[ext_resource type="Script" uid="uid://cyw6lm3w4ni6e" path="res://Scripts/Screenshot.gd" id="11_4kpch"]
 
 [sub_resource type="Curve3D" id="Curve3D_r0du0"]
 _data = {
@@ -22,7 +23,8 @@ point_count = 2
 background_mode = 2
 sky = ExtResource("3_vy5pj")
 reflected_light_source = 1
-tonemap_mode = 3
+glow_intensity = 3.11
+glow_bloom = 0.15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4kpch"]
 render_priority = 0
@@ -64,21 +66,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oh285")
 
-[sub_resource type="Gradient" id="Gradient_vy5pj"]
-offsets = PackedFloat32Array(0, 0.52638525)
-colors = PackedColorArray(0.95504373, 0.6377617, 0, 1, 0.43908823, 0.00026082052, 0.4810868, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bmxlf"]
-gradient = SubResource("Gradient_vy5pj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmxlf"]
-render_priority = 0
-shader = ExtResource("7_vy5pj")
-shader_parameter/texture_albedo = SubResource("GradientTexture1D_bmxlf")
-shader_parameter/roadmark_color = Color(0, 0.50426096, 0.9045957, 1)
-shader_parameter/roadmark_density = 64.0
-shader_parameter/roadmark_freq = 3.0
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_r0du0"]
 size = Vector2(410, 10)
 
@@ -89,7 +76,7 @@ size = Vector3(10, 3.5, 1)
 script = ExtResource("1_jw32o")
 
 [node name="ShaderGlobals" type="ShaderGlobalsOverride" parent="." unique_id=794680198]
-params/color1 = Color(0.7933289, 0.42945513, 0, 1)
+params/color1 = Color(0.89758754, 0.3211661, 0, 1)
 params/color2 = Color(0.55676615, 0.04457993, 0.60915935, 1)
 params/color3 = Color(0, 0.5473388, 0.8350875, 1)
 params/road_movement = 1
@@ -123,8 +110,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.92315, 0)
 environment = SubResource("Environment_uu6xs")
 
 [node name="Sun" type="DirectionalLight3D" parent="Enviroment" unique_id=207593681]
-transform = Transform3D(1, 0, 0, 0, -0.9659258, 0.25881913, 0, -0.25881913, -0.9659258, 0, 0, 0)
-light_energy = 1.559
+transform = Transform3D(1, 0, 0, 0, -0.9848077, 0.1736483, 0, -0.1736483, -0.9848077, 0, 0, 0)
+light_energy = 2.135
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 20.0
@@ -140,7 +127,7 @@ directional_shadow_mode = 0
 [node name="Geometry" type="Node3D" parent="." unique_id=846631133]
 
 [node name="Grid" type="MeshInstance3D" parent="Geometry" unique_id=1166113162]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -2, 0)
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -0.1, 0)
 material_override = SubResource("ShaderMaterial_4kpch")
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_jw32o")
@@ -148,7 +135,7 @@ skeleton = NodePath("")
 
 [node name="Road" type="MeshInstance3D" parent="Geometry" unique_id=1476972642]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_bmxlf")
+material_override = ExtResource("8_4kpch")
 mesh = SubResource("PlaneMesh_r0du0")
 skeleton = NodePath("../..")
 
@@ -167,17 +154,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -4)
 shape = SubResource("BoxShape3D_50glp")
 
 [node name="LightCycle" parent="." unique_id=1899721626 instance=ExtResource("9_vy5pj")]
-transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 26719.906)
+transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 300)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=549080432]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.350648, -4.904129)
-fov = 60.0
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1714874966]
+script = ExtResource("11_4kpch")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=549080432]
+transform = Transform3D(1, 0, 0, 0, 0.97787094, -0.20920897, 0, 0.20920897, 0.97787094, 0, 1.4151318, -6.632318)
+fov = 63.2
 
 [connection signal="calibration_done" from="Path3D/PathFollow3D/Player" to="." method="_on_player_calibration_done"]
 [connection signal="is_hit" from="Path3D/PathFollow3D/Player" to="." method="_on_xr_origin_3d_is_hit"]
 [connection signal="calibrate" from="Menu" to="." method="_on_menu_calibrate"]
 [connection signal="music" from="Menu" to="." method="_on_menu_music"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]
-[connection signal="vection" from="Menu" to="." method="_on_menu_vection"]
 [connection signal="timeout" from="Geometry/ObjectSpawner/Timer" to="Geometry/ObjectSpawner" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Geometry/ScoreArea" to="." method="_on_score_area_body_entered"]

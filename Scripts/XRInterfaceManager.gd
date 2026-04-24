@@ -47,3 +47,5 @@ func _ready() -> void:
 		load_properties()
 	else:
 		save_properties()
+		
+	interface.eye_height = 1.2

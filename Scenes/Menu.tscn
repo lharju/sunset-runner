@@ -15,9 +15,6 @@ metadata/_custom_type_script = "uid://cofigao63bi46"
 [sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ma218"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
 viewport_path = NodePath("SubViewport")
 
@@ -29,6 +26,13 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
 viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sjh0l"]
+viewport_path = NodePath("A/Highscores/New/SubViewport")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_sjh0l"]
+script = ExtResource("2_syfuq")
+metadata/_custom_type_script = "uid://cofigao63bi46"
 
 [node name="Menu" type="Node3D" unique_id=2102618]
 script = ExtResource("1_6pedr")
@@ -64,12 +68,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3323812, 0)
 text = "Dodge oncoming objects
 Move by tilting your head left/right"
 
-[node name="DebugText" type="Label3D" parent="Title" unique_id=2118199116]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.225708, -0.9717517, 0)
-script = ExtResource("3_s2c3o")
-
 [node name="A" type="Node3D" parent="." unique_id=226967261]
-transform = Transform3D(0.3, 0, 0, 0, 0.23254624, 0.18953165, 0, -0.18953165, 0.23254624, 0, 1.2213188, -0.8885634)
+transform = Transform3D(0.3, 0, 0, 0, 0.23254624, 0.18953165, 0, -0.18953165, 0.23254624, 0, 0.60973334, -0.73387635)
 
 [node name="Settings" type="Label3D" parent="A" unique_id=1403912676]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -83,29 +83,8 @@ text = "Calibrate"
 [node name="Label" parent="A/Settings/Calibrate/SubViewport" parent_id_path=PackedInt32Array(574086849, 70064913) index="1" unique_id=267439897]
 text = "Calibrate"
 
-[node name="LowVection" parent="A/Settings" unique_id=1284566107 instance=ExtResource("1_3kf3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_ma218")
-text = "Low Vection"
-
-[node name="Label" parent="A/Settings/LowVection/SubViewport" parent_id_path=PackedInt32Array(1284566107, 70064913) index="1" unique_id=267439897]
-text = "Low Vection"
-
-[node name="CheckBox" type="CheckBox" parent="A/Settings/LowVection/SubViewport" parent_id_path=PackedInt32Array(1284566107, 70064913) index="2" unique_id=271210048]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -12.0
-offset_top = -24.0
-offset_right = 12.0
-grow_horizontal = 2
-grow_vertical = 0
-button_mask = 0
-
 [node name="Music" parent="A/Settings" unique_id=427707089 instance=ExtResource("1_3kf3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 texture = SubResource("ViewportTexture_idohh")
 text = "Cursor"
 
@@ -174,18 +153,44 @@ text = "-"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 text = "-"
 
+[node name="New" type="Sprite3D" parent="A/Highscores" unique_id=1793661952]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 5.9604645e-08, 0, -5.9604645e-08, 1, 0.9816148, -0.49203193, -3.21399e-08)
+visible = false
+pixel_size = 0.006
+texture = SubResource("ViewportTexture_sjh0l")
+
+[node name="SubViewport" type="SubViewport" parent="A/Highscores/New" unique_id=728838479]
+transparent_bg = true
+size = Vector2i(193, 46)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="A/Highscores/New/SubViewport" unique_id=1168953762]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]New Highscore"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_sjh0l")]
+
 [node name="Marker3D" type="Marker3D" parent="." unique_id=825519680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="DebugText" type="Label3D" parent="." unique_id=2118199116]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4.2816095, 1.153533, -0.0043585002)
+script = ExtResource("3_s2c3o")
 
 [connection signal="is_pressed" from="A/Settings/Calibrate" to="." method="_on_calibrate_is_pressed"]
-[connection signal="is_pressed" from="A/Settings/LowVection" to="." method="_on_low_vection_is_pressed"]
 [connection signal="is_pressed" from="A/Settings/Music" to="." method="_on_music_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayEasy" to="." method="_on_play_easy_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayMedium" to="." method="_on_play_medium_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayHard" to="." method="_on_play_hard_is_pressed"]
 
 [editable path="A/Settings/Calibrate"]
-[editable path="A/Settings/LowVection"]
 [editable path="A/Settings/Music"]
 [editable path="A/Play/PlayEasy"]
 [editable path="A/Play/PlayMedium"]

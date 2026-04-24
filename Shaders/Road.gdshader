@@ -18,13 +18,13 @@ void fragment() {
 	
 	// Roadmarks
 	float x = sign(cos(UV.x * roadmark_density - TIME * roadmark_freq));
-	float y = clamp(sign(sin(UV.y * PI) -0.995),0.0, 1.0);
-	float roadmark = clamp(x * y, 0.0, 1.0);
+	float y = clamp(sign(sin(UV.y * PI) -0.999),0.0, 1.0);
+	float roadmark = clamp(x * y -0.5, 0.0, 1.0);
 	
-	// R
+	// 
 	vec3 gradient = mix(color1 * 3.0, color2, clamp(pow(UV.x + 0.55, 4.)  , 0.0, 1.0)).rgb;
 	
+	ALBEDO = gradient;
 	ALBEDO = mix(gradient, color3.rgb, roadmark);
-
 	
 }
