@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy2pp6ci41yc2"]
+[gd_scene format=3 uid="uid://dy2pp6ci41yc2"]
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_5ms4e"]
 [ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="2_5ms4e"]
@@ -27,31 +27,31 @@ size = Vector2(20, 20)
 [sub_resource type="ViewportTexture" id="ViewportTexture_5ms4e"]
 viewport_path = NodePath("SubViewport")
 
-[node name="XROrigin3D" type="XROrigin3D"]
+[node name="XROrigin3D" type="XROrigin3D" unique_id=752491769]
 current = true
 script = ExtResource("2_5ms4e")
 
-[node name="XRCamera3D" type="XRCamera3D" parent="."]
+[node name="XRCamera3D" type="XRCamera3D" parent="." unique_id=1730717737]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7070405, 0)
 current = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1562683707]
 environment = SubResource("Environment_2xot7")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=929243642]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 4.044507, 0)
 light_angular_distance = 2.73
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=447401800]
 mesh = SubResource("PlaneMesh_34lg8")
 skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=911281625]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=142591394]
 shape = SubResource("WorldBoundaryShape3D_y1jsw")
 
-[node name="StaticBody3D2" parent="." instance=ExtResource("1_5ms4e")]
+[node name="StaticBody3D2" parent="." unique_id=1834487557 instance=ExtResource("1_5ms4e")]
 transform = Transform3D(1, 0, 0, 0, 0.9383664, 0.34564215, 0, -0.34564215, 0.9383664, 0, 0.9082254, -2.423913)
 texture = SubResource("ViewportTexture_5ms4e")

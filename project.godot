@@ -27,6 +27,7 @@ buses/default_bus_layout="uid://cyiuomki4oa7j"
 [autoload]
 
 XRInterfaceManager="*uid://jd51p1p6mquy"
+AndroidManager="*uid://bqki05isaih84"
 
 [display]
 
@@ -89,6 +90,8 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
 shading/overrides/force_vertex_shading=true
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=2
 vrs/mode=2
 
 [shader_globals]

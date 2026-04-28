@@ -40,7 +40,6 @@ func _ready() -> void:
 	else:
 		# HACK should handle failure to init interface
 		return
-	
 	# Load config file if it exists, else create it with default values
 	config = ConfigFile.new()
 	if FileAccess.file_exists(config_path):
@@ -48,4 +47,5 @@ func _ready() -> void:
 	else:
 		save_properties()
 		
+	interface.oversample = 1.5
 	interface.eye_height = 1.2

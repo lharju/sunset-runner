@@ -21,7 +21,7 @@ func _ready() -> void:
 	#	temp = temp + str(dm.xdpi) + ":" + str(dm.ydpi)
 	
 	var a: Vector2 = DisplayServer.screen_get_size() / float(DisplayServer.screen_get_dpi())
-	text = temp + str(a)
+	text = temp + str(a) + "\n" + str(AndroidManager.screen_size)
 	
 	
 	return
@@ -51,4 +51,6 @@ func _ready() -> void:
 				vibrator_service.vibrate(effect)
 		
 		
+func _process(_delta: float) -> void:
+	text = str(AndroidManager.get_screen_size())
 	

@@ -22,8 +22,9 @@ point_count = 2
 [sub_resource type="Environment" id="Environment_uu6xs"]
 background_mode = 2
 sky = ExtResource("3_vy5pj")
+ambient_light_source = 1
 reflected_light_source = 1
-glow_intensity = 3.11
+tonemap_mode = 3
 glow_bloom = 0.15
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4kpch"]
@@ -157,6 +158,7 @@ shape = SubResource("BoxShape3D_50glp")
 transform = Transform3D(0.505, 0, 0, 0, 0.505, 0, 0, 0, 0.505, 0, 0, 300)
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1714874966]
+msaa_3d = 3
 script = ExtResource("11_4kpch")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=549080432]

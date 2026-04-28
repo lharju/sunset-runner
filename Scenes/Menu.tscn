@@ -15,6 +15,9 @@ metadata/_custom_type_script = "uid://cofigao63bi46"
 [sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ma218"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
 viewport_path = NodePath("SubViewport")
 
@@ -22,9 +25,6 @@ viewport_path = NodePath("SubViewport")
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aobxe"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sjh0l"]
@@ -44,7 +44,7 @@ texture = SubResource("ViewportTexture_wfhf6")
 [node name="SubViewport" type="SubViewport" parent="Title" unique_id=827754355]
 disable_3d = true
 transparent_bg = true
-size = Vector2i(1024, 1024)
+size = Vector2i(413, 184)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Title/SubViewport" unique_id=977141539]
 clip_contents = false
@@ -60,7 +60,6 @@ bbcode_enabled = true
 text = "[ghost freq=2.0 span=1.0]SUNSET
 RUNNER[/ghost]"
 horizontal_alignment = 1
-vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_s2c3o")]
 
 [node name="TutorialText" type="Label3D" parent="Title" unique_id=1809439198]
@@ -85,7 +84,7 @@ text = "Calibrate"
 
 [node name="Music" parent="A/Settings" unique_id=427707089 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_idohh")
+texture = SubResource("ViewportTexture_ma218")
 text = "Cursor"
 
 [node name="Label" parent="A/Settings/Music/SubViewport" parent_id_path=PackedInt32Array(427707089, 70064913) index="1" unique_id=267439897]
@@ -109,7 +108,7 @@ text = "Play"
 
 [node name="PlayEasy" parent="A/Play" unique_id=1643717761 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_3jcrr")
+texture = SubResource("ViewportTexture_idohh")
 text = "Easy"
 
 [node name="SubViewport" parent="A/Play/PlayEasy" index="0" unique_id=70064913]
@@ -120,7 +119,7 @@ text = "Easy"
 
 [node name="PlayMedium" parent="A/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_aobxe")
+texture = SubResource("ViewportTexture_3jcrr")
 text = "Medium"
 
 [node name="SubViewport" parent="A/Play/PlayMedium" index="0" unique_id=70064913]
@@ -131,7 +130,7 @@ text = "Medium"
 
 [node name="PlayHard" parent="A/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_ab40c")
+texture = SubResource("ViewportTexture_aobxe")
 text = "Hard"
 
 [node name="Label" parent="A/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
