@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 
 
+
 func get_screen_size() -> Vector2:
 	
 	if android_runtime:
@@ -25,3 +26,12 @@ func get_screen_size() -> Vector2:
 		screen_size = Vector2(display_metrics.widthPixels / display_metrics.xdpi, display_metrics.heightPixels / display_metrics.ydpi)
 
 	return screen_size
+
+
+func vibrate() -> void:
+	var vibrator_service = android_runtime.getApplicationContext().getSystemService("vibrator")
+	if vibrator_service and vibrator_service.hasVibrator():
+		# Configure and run a VibrationEffect.
+		var VibrationEffect = JavaClassWrapper.wrap("android.os.VibrationEffect")
+		var effect = VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE)
+		vibrator_service.vibrate(effect)

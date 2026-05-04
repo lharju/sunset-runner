@@ -1,3 +1,4 @@
 [gd_resource type="Theme" format=3 uid="uid://pfljj2xq8p2w"]
 
 [resource]
+Label/constants/outline_size = 5

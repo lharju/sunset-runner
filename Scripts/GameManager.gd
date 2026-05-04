@@ -8,6 +8,7 @@ extends Node3D
 @onready var object_spawner: Marker3D = $Geometry/ObjectSpawner
 @onready var timer: Timer = $Geometry/ObjectSpawner/Timer
 @onready var main_music: AudioStreamPlayer = $MainMusic
+@onready var shader_globals: ShaderGlobalsOverride = $ShaderGlobals
 
 
 enum States {NONE = 0 , CALIBRATION = 1, MENU = 2, PLAY = 3}
@@ -106,3 +107,8 @@ func _on_menu_music(on: bool) -> void:
 
 func _on_score_area_body_entered(_body: Node3D) -> void:
 	score += 1
+
+
+func _on_menu_vection(on: bool) -> void:
+	shader_globals.set_deferred("params/road_movement", 0 if on else 1)
+	

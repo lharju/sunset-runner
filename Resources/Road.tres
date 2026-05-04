@@ -13,6 +13,5 @@ gradient = SubResource("Gradient_vy5pj")
 render_priority = 0
 shader = ExtResource("1_nuu01")
 shader_parameter/texture_albedo = SubResource("GradientTexture1D_bmxlf")
-shader_parameter/roadmark_color = Color(0, 0.50426096, 0.9045957, 1)
 shader_parameter/roadmark_density = 215.815
 shader_parameter/roadmark_freq = 5.15

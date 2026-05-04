@@ -31,4 +31,4 @@ func disable() -> void:
 	timer.stop()
 	for n in get_children():
 		if not n is Timer:
-			n.free() 
+			n.explode(true) 

@@ -13,6 +13,7 @@ extends Node3D
 signal play(difficulty: int)
 signal calibrate()
 signal music(on: bool)
+signal vection(on: bool)
 
 var low_vection: bool = false
 var music_on: bool = false
@@ -35,3 +36,8 @@ func _on_music_is_pressed() -> void:
 	music_on = !music_on
 	check_box2.set_pressed_no_signal(music_on)
 	music.emit(music_on)
+
+
+func _on_vection_is_pressed() -> void:
+	low_vection = !low_vection
+	vection.emit(low_vection)

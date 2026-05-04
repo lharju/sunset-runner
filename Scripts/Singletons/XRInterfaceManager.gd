@@ -47,5 +47,5 @@ func _ready() -> void:
 	else:
 		save_properties()
 		
-	interface.oversample = 1.5
+	interface.oversample = 1.7
 	interface.eye_height = 1.2

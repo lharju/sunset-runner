@@ -125,4 +125,6 @@ func _on_calib_button_is_pressed() -> void:
 	cal_next = true
 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
+	_body.explode(false)
+	AndroidManager.vibrate()
 	is_hit.emit()

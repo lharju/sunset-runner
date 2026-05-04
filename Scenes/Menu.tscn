@@ -18,6 +18,9 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_ma218"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
 viewport_path = NodePath("SubViewport")
 
@@ -38,7 +41,7 @@ metadata/_custom_type_script = "uid://cofigao63bi46"
 script = ExtResource("1_6pedr")
 
 [node name="Title" type="Sprite3D" parent="." unique_id=383994843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.618545, -3.2586608)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.618545, -4.258661)
 texture = SubResource("ViewportTexture_wfhf6")
 
 [node name="SubViewport" type="SubViewport" parent="Title" unique_id=827754355]
@@ -54,7 +57,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/paragraph_separation = -55
-theme_override_constants/outline_size = 3
+theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 94
 bbcode_enabled = true
 text = "[ghost freq=2.0 span=1.0]SUNSET
@@ -103,6 +106,27 @@ grow_horizontal = 2
 grow_vertical = 0
 button_mask = 0
 
+[node name="Vection" parent="A/Settings" unique_id=1280319805 instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+texture = SubResource("ViewportTexture_ab40c")
+text = "Cursor"
+
+[node name="Label" parent="A/Settings/Vection/SubViewport" parent_id_path=PackedInt32Array(1280319805, 70064913) index="1" unique_id=267439897]
+text = "Low Vection"
+
+[node name="CheckBox" type="CheckBox" parent="A/Settings/Vection/SubViewport" parent_id_path=PackedInt32Array(1280319805, 70064913) index="2" unique_id=371363364]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -24.0
+offset_right = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+button_mask = 0
+
 [node name="Play" type="Label3D" parent="A" unique_id=2043376841]
 text = "Play"
 
@@ -115,7 +139,8 @@ text = "Easy"
 disable_3d = true
 
 [node name="Label" parent="A/Play/PlayEasy/SubViewport" index="1" unique_id=267439897]
-text = "Easy"
+text = "Easy
+Helppo"
 
 [node name="PlayMedium" parent="A/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
@@ -126,7 +151,8 @@ text = "Medium"
 disable_3d = true
 
 [node name="Label" parent="A/Play/PlayMedium/SubViewport" index="1" unique_id=267439897]
-text = "Medium"
+text = "Medium
+Keski"
 
 [node name="PlayHard" parent="A/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -134,7 +160,8 @@ texture = SubResource("ViewportTexture_aobxe")
 text = "Hard"
 
 [node name="Label" parent="A/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
-text = "Hard"
+text = "Hard
+Vaikea"
 
 [node name="Highscores" type="Label3D" parent="A" unique_id=2027352177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
@@ -185,12 +212,14 @@ script = ExtResource("3_s2c3o")
 
 [connection signal="is_pressed" from="A/Settings/Calibrate" to="." method="_on_calibrate_is_pressed"]
 [connection signal="is_pressed" from="A/Settings/Music" to="." method="_on_music_is_pressed"]
+[connection signal="is_pressed" from="A/Settings/Vection" to="." method="_on_vection_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayEasy" to="." method="_on_play_easy_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayMedium" to="." method="_on_play_medium_is_pressed"]
 [connection signal="is_pressed" from="A/Play/PlayHard" to="." method="_on_play_hard_is_pressed"]
 
 [editable path="A/Settings/Calibrate"]
 [editable path="A/Settings/Music"]
+[editable path="A/Settings/Vection"]
 [editable path="A/Play/PlayEasy"]
 [editable path="A/Play/PlayMedium"]
 [editable path="A/Play/PlayHard"]

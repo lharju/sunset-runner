@@ -112,6 +112,10 @@ color3={
 "type": "color",
 "value": Color(0, 0, 0, 1)
 }
+low_vection={
+"type": "bool",
+"value": false
+}
 
 [xr]
 

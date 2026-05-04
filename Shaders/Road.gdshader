@@ -3,11 +3,11 @@ render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
 
 
 uniform sampler2D texture_albedo : source_color, filter_nearest_mipmap, repeat_enable;
-uniform vec3 roadmark_color : source_color;
 
 global uniform vec4 color1 : source_color;
 global uniform vec4 color2 : source_color;
 global uniform vec4 color3 : source_color;
+global uniform int road_movement;
 
 uniform float roadmark_density = 64.;
 uniform float roadmark_freq = 3.0;
@@ -17,7 +17,7 @@ void fragment() {
 
 	
 	// Roadmarks
-	float x = sign(cos(UV.x * roadmark_density - TIME * roadmark_freq));
+	float x = sign(cos(UV.x * roadmark_density - TIME * roadmark_freq* float(road_movement)));
 	float y = clamp(sign(sin(UV.y * PI) -0.999),0.0, 1.0);
 	float roadmark = clamp(x * y -0.5, 0.0, 1.0);
 	
