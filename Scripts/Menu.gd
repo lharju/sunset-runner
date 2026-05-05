@@ -1,6 +1,6 @@
 extends Node3D
 
-
+@onready var check_box = $MainMenu/Settings/Vection/SubViewport/CheckBox
 @onready var check_box2: CheckBox = $MainMenu/Settings/Music/SubViewport/CheckBox
 
 @onready var easy: Label3D = $MainMenu/Highscores/Easy
@@ -71,6 +71,7 @@ func _on_music_is_pressed() -> void:
 
 func _on_vection_is_pressed() -> void:
 	low_vection = !low_vection
+	check_box.set_pressed_no_signal(low_vection)
 	vection.emit(low_vection)
 
 func _on_play_again_is_pressed() -> void:

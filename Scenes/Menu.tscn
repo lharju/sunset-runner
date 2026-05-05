@@ -30,13 +30,13 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_wfhf6"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_3jcrr"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aobxe"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sjh0l"]
@@ -46,10 +46,10 @@ viewport_path = NodePath("ReplayMenu/New/SubViewport")
 script = ExtResource("2_syfuq")
 metadata/_custom_type_script = "uid://cofigao63bi46"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qki4b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_byewe"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qki4b"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Menu" type="Node3D" unique_id=2102618]
@@ -126,7 +126,7 @@ text = "Play"
 
 [node name="PlayEasy" parent="MainMenu/Play" unique_id=1643717761 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_3jcrr")
+texture = SubResource("ViewportTexture_wfhf6")
 text = "Easy"
 
 [node name="SubViewport" parent="MainMenu/Play/PlayEasy" index="0" unique_id=70064913]
@@ -137,7 +137,7 @@ text = "Easy"
 
 [node name="PlayMedium" parent="MainMenu/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_aobxe")
+texture = SubResource("ViewportTexture_3jcrr")
 text = "Medium"
 
 [node name="SubViewport" parent="MainMenu/Play/PlayMedium" index="0" unique_id=70064913]
@@ -148,7 +148,7 @@ text = "Medium"
 
 [node name="PlayHard" parent="MainMenu/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_ab40c")
+texture = SubResource("ViewportTexture_aobxe")
 text = "Hard"
 
 [node name="Label" parent="MainMenu/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
@@ -211,7 +211,7 @@ text = "0"
 
 [node name="PlayAgain" parent="ReplayMenu" unique_id=47870876 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.2, 0)
-texture = SubResource("ViewportTexture_qki4b")
+texture = SubResource("ViewportTexture_ab40c")
 text = "Play
 Again"
 
@@ -221,7 +221,7 @@ Again"
 
 [node name="BackToMenu" parent="ReplayMenu" unique_id=1281565371 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.2, 0)
-texture = SubResource("ViewportTexture_byewe")
+texture = SubResource("ViewportTexture_qki4b")
 text = "Back To
 Menu"
 
