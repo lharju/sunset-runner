@@ -80,7 +80,6 @@ script = ExtResource("1_jw32o")
 params/color1 = Color(0.89758754, 0.3211661, 0, 1)
 params/color2 = Color(0.55676615, 0.04457993, 0.60915935, 1)
 params/color3 = Color(0, 0.5473388, 0.8350875, 1)
-params/low_vection = false
 params/road_movement = 1
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="." unique_id=916895948]

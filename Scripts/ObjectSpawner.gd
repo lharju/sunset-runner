@@ -5,16 +5,12 @@ var dodge_object_scn: PackedScene = preload("res://Scenes/DodgeObject.tscn")
 @export var speed: float = 80
 @export var time: float
 
-var all_positions: Array = []
+var all_positions: Array = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
 var available_positions: Array = []
 
-func _ready():
-	for i in range(-4, 5, 1):
-		all_positions.append(i)
 
 func _on_timer_timeout() -> void:
-	var object: RigidBody3D = dodge_object_scn.instantiate()
-	object.apply_impulse(Vector3(0,0,speed* 1.5))
+	var object: CharacterBody3D = dodge_object_scn.instantiate()
 	
 	if available_positions.size() == 0:
 		available_positions = all_positions.duplicate()

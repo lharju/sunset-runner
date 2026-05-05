@@ -16,6 +16,8 @@ func _ready() -> void:
 
 
 func get_screen_size() -> Vector2:
+	if not OS.has_feature("android"):
+		return Vector2.ZERO
 	
 	if android_runtime:
 		activity = android_runtime.getActivity()
@@ -29,6 +31,9 @@ func get_screen_size() -> Vector2:
 
 
 func vibrate() -> void:
+	if not OS.has_feature("android"):
+		return
+		
 	var vibrator_service = android_runtime.getApplicationContext().getSystemService("vibrator")
 	if vibrator_service and vibrator_service.hasVibrator():
 		# Configure and run a VibrationEffect.

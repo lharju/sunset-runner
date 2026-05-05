@@ -6,7 +6,7 @@ extends Node3D
 @onready var player: XROrigin3D = $Path3D/PathFollow3D/Player
 
 @onready var object_spawner: Marker3D = $Geometry/ObjectSpawner
-@onready var timer: Timer = $Geometry/ObjectSpawner/Timer
+
 @onready var main_music: AudioStreamPlayer = $MainMusic
 @onready var shader_globals: ShaderGlobalsOverride = $ShaderGlobals
 

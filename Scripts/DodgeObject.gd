@@ -1,4 +1,6 @@
-extends RigidBody3D
+extends CharacterBody3D
+class_name DodgeObject
+
 var pitch_range: float = 0.5
 
 @onready var particle_body: CPUParticles3D = $ParticleBody
@@ -14,8 +16,8 @@ func explode(of: bool):
 		self.queue_free()
 		return
 	light_cycle.hide()
-	self.freeze = true
-	self.linear_velocity = Vector3.ZERO
+
+	self.set_physics_process(false)
 	particle_body.emitting = true
 	particle_tire_back.emitting = true
 	particle_tire_front.emitting = true
@@ -31,10 +33,23 @@ func _ready() -> void:
 	particle_body.restart()
 	particle_tire_back.restart()
 	particle_tire_front.restart()
+	self.process_mode =Node.PROCESS_MODE_ALWAYS
+	self.set_physics_process(true)
 
 
+	
 
-func _process(_delta: float) -> void:	
+
+		
+		
+func _physics_process(_delta: float) -> void:
 	if self.global_position.z > 200:
-		process_mode = Node.PROCESS_MODE_DISABLED
 		explode(false)
+		return
+	
+	
+	self.velocity.z = 100
+	move_and_slide()
+	
+	
+		
