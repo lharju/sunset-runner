@@ -36,37 +36,45 @@ func _ready() -> void:
 	menu.easy.text = str(highscore.get_value("highscores", "easy"))
 	menu.medium.text = str(highscore.get_value("highscores", "medium"))
 	menu.hard.text = str(highscore.get_value("highscores", "hard"))
+	menu.set_state(1)
 		
 
 func _on_xr_origin_3d_is_hit() -> void:
 	player.cursor_on = true
 	player.next_state = States.MENU
 	game_state = States.MENU
+	
+	menu.set_state(2)
+	object_spawner.disable()
+	
+	menu.your_score.text = str(score)
 	menu.new.hide()
 	match difficulty:
 		0:
+			menu.highscore.text = str(highscore.get_value("highscores", "easy"))
 			if score > highscore.get_value("highscores", "easy"):
 				menu.easy.text = str(score)
 				highscore.set_value("highscores", "easy", score)
 				highscore.save(highscore_path)
 				menu.new.show()
-				menu.new.global_position = menu.easy.global_position + Vector3(0.3, 0, 0)
 		1:
+			menu.highscore.text = str(highscore.get_value("highscores", "medium"))
 			if score > highscore.get_value("highscores", "medium"):
 				menu.medium.text = str(score)
 				highscore.set_value("highscores", "medium", score)
 				highscore.save(highscore_path)
 				menu.new.show()
-				menu.new.global_position = menu.medium.global_position + Vector3(0.3, 0, 0)
+		
 		2:
+			menu.highscore.text = str(highscore.get_value("highscores", "hard"))
 			if score > highscore.get_value("highscores", "hard"):
 				menu.hard.text = str(score)
 				highscore.set_value("highscores", "hard", score)
 				highscore.save(highscore_path)
 				menu.new.show()
-				menu.new.global_position = menu.hard.global_position + Vector3(0.3, 0, 0)
 	
-	object_spawner.disable()
+	
+	
 	menu.process_mode = Node.PROCESS_MODE_INHERIT
 	menu.show()
 
@@ -74,15 +82,15 @@ func _on_menu_calibrate() -> void:
 	player.next_state = States.CALIBRATION
 	game_state = States.CALIBRATION
 	
-	menu.process_mode = Node.PROCESS_MODE_DISABLED
-	menu.hide()
+	menu.set_state(0)
 
-func _on_menu_play(_difficulty: int) -> void:
+func _on_menu_play(_difficulty: int = -1) -> void:
 	player.cursor_on = false
 	score = 0
-	difficulty = _difficulty
-	menu.process_mode = Node.PROCESS_MODE_DISABLED
-	menu.hide()
+	if _difficulty != -1:
+		difficulty = _difficulty
+		
+	menu.set_state(0)
 	
 	player.next_state = States.PLAY
 	game_state = States.PLAY
@@ -90,14 +98,11 @@ func _on_menu_play(_difficulty: int) -> void:
 	$StartTimer.start()
 	await $StartTimer.timeout
 	
-	object_spawner.speed = 80 + 15 * difficulty
-	object_spawner.time = 1.0 - 0.3 * difficulty
-	object_spawner.enable()
+	object_spawner.enable(80 + 15 * difficulty, 1.0 - 0.3 * difficulty)
 
 func _on_player_calibration_done() -> void:
 	player.next_state = States.MENU
-	menu.process_mode = Node.PROCESS_MODE_INHERIT
-	menu.show()
+	menu.set_state(1)
 
 func _on_menu_music(on: bool) -> void:
 	if on:
@@ -107,7 +112,6 @@ func _on_menu_music(on: bool) -> void:
 
 func _on_score_area_body_entered(_body: Node3D) -> void:
 	score += 1
-
 
 func _on_menu_vection(on: bool) -> void:
 	shader_globals.set_deferred("params/road_movement", 0 if on else 1)

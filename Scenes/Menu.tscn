@@ -5,12 +5,21 @@
 [ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Scripts/RichTextGhost.gd" id="2_syfuq"]
 [ext_resource type="Shader" uid="uid://duegntyt6lgjx" path="res://Shaders/TitleText.gdshader" id="5_ma218"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wfhf6"]
-viewport_path = NodePath("Title/SubViewport")
+[sub_resource type="FontVariation" id="FontVariation_s2c3o"]
+spacing_top = -35
+spacing_bottom = -18
 
-[sub_resource type="RichTextEffect" id="RichTextEffect_s2c3o"]
-script = ExtResource("2_syfuq")
-metadata/_custom_type_script = "uid://cofigao63bi46"
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jcrr"]
+render_priority = 0
+shader = ExtResource("5_ma218")
+
+[sub_resource type="TextMesh" id="TextMesh_ma218"]
+material = SubResource("ShaderMaterial_3jcrr")
+text = "SUNSET
+RUNNER"
+font = SubResource("FontVariation_s2c3o")
+font_size = 94
+depth = 0.1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
 viewport_path = NodePath("SubViewport")
@@ -31,7 +40,7 @@ viewport_path = NodePath("SubViewport")
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_sjh0l"]
-viewport_path = NodePath("MainMenu/Highscores/New/SubViewport")
+viewport_path = NodePath("ReplayMenu/New/SubViewport")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_sjh0l"]
 script = ExtResource("2_syfuq")
@@ -43,53 +52,15 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_byewe"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="FontVariation" id="FontVariation_s2c3o"]
-spacing_top = -35
-spacing_bottom = -18
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jcrr"]
-render_priority = 0
-shader = ExtResource("5_ma218")
-
-[sub_resource type="TextMesh" id="TextMesh_ma218"]
-material = SubResource("ShaderMaterial_3jcrr")
-text = "SUNSET
-RUNNER"
-font = SubResource("FontVariation_s2c3o")
-font_size = 94
-depth = 0.1
-
 [node name="Menu" type="Node3D" unique_id=2102618]
 script = ExtResource("1_6pedr")
 
-[node name="Title" type="Sprite3D" parent="." unique_id=383994843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.618545, -4.258661)
-visible = false
-texture = SubResource("ViewportTexture_wfhf6")
-
-[node name="SubViewport" type="SubViewport" parent="Title" unique_id=827754355]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(413, 184)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Title/SubViewport" unique_id=977141539]
-clip_contents = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/paragraph_separation = -55
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/normal_font_size = 94
-bbcode_enabled = true
-text = "[ghost freq=2.0 span=1.0]SUNSET
-RUNNER[/ghost]"
-horizontal_alignment = 1
-custom_effects = [SubResource("RichTextEffect_s2c3o")]
+[node name="Title" type="MeshInstance3D" parent="." unique_id=1328825611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4314828, -4.3039846)
+mesh = SubResource("TextMesh_ma218")
 
 [node name="TutorialText" type="Label3D" parent="Title" unique_id=1809439198]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3323812, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.145319, 0.04532385)
 text = "Dodge oncoming objects
 Move by tilting your head left/right"
 
@@ -101,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 text = "Settings"
 
 [node name="Calibrate" parent="MainMenu/Settings" unique_id=574086849 instance=ExtResource("1_3kf3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 texture = SubResource("ViewportTexture_s2c3o")
 text = "Calibrate"
 
@@ -130,7 +101,7 @@ grow_vertical = 0
 button_mask = 0
 
 [node name="Vection" parent="MainMenu/Settings" unique_id=1280319805 instance=ExtResource("1_3kf3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 texture = SubResource("ViewportTexture_idohh")
 text = "Cursor"
 
@@ -162,8 +133,7 @@ text = "Easy"
 disable_3d = true
 
 [node name="Label" parent="MainMenu/Play/PlayEasy/SubViewport" index="1" unique_id=267439897]
-text = "Easy
-Helppo"
+text = "Easy"
 
 [node name="PlayMedium" parent="MainMenu/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
@@ -174,8 +144,7 @@ text = "Medium"
 disable_3d = true
 
 [node name="Label" parent="MainMenu/Play/PlayMedium/SubViewport" index="1" unique_id=267439897]
-text = "Medium
-Keski"
+text = "Medium"
 
 [node name="PlayHard" parent="MainMenu/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -183,8 +152,7 @@ texture = SubResource("ViewportTexture_ab40c")
 text = "Hard"
 
 [node name="Label" parent="MainMenu/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
-text = "Hard
-Vaikea"
+text = "Hard"
 
 [node name="Highscores" type="Label3D" parent="MainMenu" unique_id=2027352177]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
@@ -202,17 +170,19 @@ text = "-"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 text = "-"
 
-[node name="New" type="Sprite3D" parent="MainMenu/Highscores" unique_id=1793661952]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 5.9604645e-08, 0, -5.9604645e-08, 1, 0.9816148, -0.49203193, -3.21399e-08)
-visible = false
+[node name="ReplayMenu" type="Node3D" parent="." unique_id=1100339293]
+transform = Transform3D(0.3, 0, 0, 0, 0.2819078, 0.10260604, 0, -0.10260604, 0.2819078, 0, 1.0345076, -1.144195)
+
+[node name="New" type="Sprite3D" parent="ReplayMenu" unique_id=1793661952]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 1, -0.02445817, -0.71993196, 2.3376197e-07)
 pixel_size = 0.006
 texture = SubResource("ViewportTexture_sjh0l")
 
-[node name="SubViewport" type="SubViewport" parent="MainMenu/Highscores/New" unique_id=728838479]
+[node name="SubViewport" type="SubViewport" parent="ReplayMenu/New" unique_id=728838479]
 transparent_bg = true
 size = Vector2i(193, 46)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Highscores/New/SubViewport" unique_id=1168953762]
+[node name="RichTextLabel" type="RichTextLabel" parent="ReplayMenu/New/SubViewport" unique_id=1168953762]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -226,21 +196,41 @@ horizontal_alignment = 1
 vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_sjh0l")]
 
-[node name="ReplayMenu" type="Node3D" parent="." unique_id=1100339293]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 1.7881394e-08, 0, -1.7881394e-08, 0.3, 0, 0.60973334, -0.73387635)
+[node name="Text" type="Label3D" parent="ReplayMenu" unique_id=1598206799]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14877367, 0)
+text = "Game Over
+Your Score        Highscore"
 
-[node name="Replay" parent="ReplayMenu" unique_id=47870876 instance=ExtResource("1_3kf3n")]
+[node name="YourScore" type="Label3D" parent="ReplayMenu" unique_id=811116039]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, 0)
+text = "0"
+
+[node name="Highscore" type="Label3D" parent="ReplayMenu" unique_id=1599005923]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, 0)
+text = "0"
+
+[node name="PlayAgain" parent="ReplayMenu" unique_id=47870876 instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.2, 0)
 texture = SubResource("ViewportTexture_qki4b")
+text = "Play
+Again"
 
-[node name="ButtonVR" parent="ReplayMenu" unique_id=1281565371 instance=ExtResource("1_3kf3n")]
+[node name="Label" parent="ReplayMenu/PlayAgain/SubViewport" parent_id_path=PackedInt32Array(47870876, 70064913) index="1" unique_id=267439897]
+text = "Play
+Again"
+
+[node name="BackToMenu" parent="ReplayMenu" unique_id=1281565371 instance=ExtResource("1_3kf3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.2, 0)
 texture = SubResource("ViewportTexture_byewe")
+text = "Back To
+Menu"
+
+[node name="Label" parent="ReplayMenu/BackToMenu/SubViewport" parent_id_path=PackedInt32Array(1281565371, 70064913) index="1" unique_id=267439897]
+text = "Back To
+Menu"
 
 [node name="HeadPosition" type="Marker3D" parent="." unique_id=825519680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1328825611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4314828, -4.3039846)
-mesh = SubResource("TextMesh_ma218")
 
 [connection signal="is_pressed" from="MainMenu/Settings/Calibrate" to="." method="_on_calibrate_is_pressed"]
 [connection signal="is_pressed" from="MainMenu/Settings/Music" to="." method="_on_music_is_pressed"]
@@ -248,6 +238,8 @@ mesh = SubResource("TextMesh_ma218")
 [connection signal="is_pressed" from="MainMenu/Play/PlayEasy" to="." method="_on_play_easy_is_pressed"]
 [connection signal="is_pressed" from="MainMenu/Play/PlayMedium" to="." method="_on_play_medium_is_pressed"]
 [connection signal="is_pressed" from="MainMenu/Play/PlayHard" to="." method="_on_play_hard_is_pressed"]
+[connection signal="is_pressed" from="ReplayMenu/PlayAgain" to="." method="_on_play_again_is_pressed"]
+[connection signal="is_pressed" from="ReplayMenu/BackToMenu" to="." method="_on_back_to_menu_is_pressed"]
 
 [editable path="MainMenu/Settings/Calibrate"]
 [editable path="MainMenu/Settings/Music"]
@@ -255,3 +247,5 @@ mesh = SubResource("TextMesh_ma218")
 [editable path="MainMenu/Play/PlayEasy"]
 [editable path="MainMenu/Play/PlayMedium"]
 [editable path="MainMenu/Play/PlayHard"]
+[editable path="ReplayMenu/PlayAgain"]
+[editable path="ReplayMenu/BackToMenu"]

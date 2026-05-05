@@ -33,7 +33,7 @@ func _ready() -> void:
 	particle_body.restart()
 	particle_tire_back.restart()
 	particle_tire_front.restart()
-	self.process_mode =Node.PROCESS_MODE_ALWAYS
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	self.set_physics_process(true)
 
 
@@ -46,9 +46,6 @@ func _physics_process(_delta: float) -> void:
 	if self.global_position.z > 200:
 		explode(false)
 		return
-	
-	
-	self.velocity.z = 100
 	move_and_slide()
 	
 	
