@@ -1,16 +1,22 @@
-[gd_scene format=4 uid="uid://be2v18ieqet5c"]
+[gd_scene format=3 uid="uid://be2v18ieqet5c"]
 
 [ext_resource type="Script" uid="uid://bdj7aygik5qe0" path="res://Scripts/GameManager.gd" id="1_jw32o"]
 [ext_resource type="PackedScene" uid="uid://d3ed2d3ucnq8q" path="res://Scenes/Menu.tscn" id="1_v1gob"]
 [ext_resource type="Script" uid="uid://biakqi0qkdj82" path="res://Scripts/ObjectSpawner.gd" id="3_rgh2o"]
 [ext_resource type="Sky" uid="uid://c1jcmlculciew" path="res://Resources/Sky.tres" id="3_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://drfakj0pu768p" path="res://Scenes/CardboardVR.tscn" id="4_rgh2o"]
-[ext_resource type="Shader" uid="uid://6n6u2jtrxl2o" path="res://Shaders/Grid.gdshader" id="4_vy5pj"]
-[ext_resource type="Texture2D" uid="uid://bn5ei7u4lplil" path="res://Materials/grid_colorize_2.png" id="7_bmxlf"]
 [ext_resource type="Material" uid="uid://cxhgfnm25h77g" path="res://Resources/Road.tres" id="8_4kpch"]
 [ext_resource type="AudioStream" uid="uid://d4cnh60477a8v" path="res://Resources/SunsetRunner_session.wav" id="8_50glp"]
 [ext_resource type="PackedScene" uid="uid://cme4oib8nnspy" path="res://Scenes/LightCycle.tscn" id="9_vy5pj"]
 [ext_resource type="Script" uid="uid://cyw6lm3w4ni6e" path="res://Scripts/Screenshot.gd" id="11_4kpch"]
+
+[sub_resource type="Curve" id="Curve_vy5pj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0.006234415, 0.284572), 0.0, 0.0, 0, 0, Vector2(0.1159601, -0.31467545), 0.0, 0.0, 0, 0, Vector2(0.25561097, 0.22342432), 0.0, 0.0, 0, 0, Vector2(0.39027432, -0.21683908), 0.0, 0.0, 0, 0, Vector2(0.5947631, 0.2723425), 0.0, 0.0, 0, 0, Vector2(0.7269327, -1), 0.0, 0.0, 0, 0, Vector2(0.83915216, 1), 0.0, 0.0, 0, 0, Vector2(0.9688279, -1), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_bmxlf"]
+curve = SubResource("Curve_vy5pj")
 
 [sub_resource type="Curve3D" id="Curve3D_r0du0"]
 _data = {
@@ -27,48 +33,9 @@ reflected_light_source = 1
 tonemap_mode = 2
 glow_bloom = 0.15
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kpch"]
-render_priority = 0
-shader = ExtResource("4_vy5pj")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("7_bmxlf")
-shader_parameter/uv1_scale = Vector3(42, 42, 42)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gatsr"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_oh285"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"format": 34896613377,
-"index_count": 90,
-"index_data": PackedByteArray("AAABAAIAAQADAAQAAAADAAEAAwAFAAYAAwAHAAUABQAHAAgAAAAHAAMABwAJAAoABwALAAkACQALAAwABwANAAsAAAANAAcACwAOAA8ACwANAA4ADgANABAADQARABIADQATABEAEQATABQADQAAABUADQAVABMAEwAWABcAEwAVABYAFgAVABgAGQAAABoAGwAAABkAFQAAABsAGwAZABwAFQAbAB0AHQAbAB4AFQAdAB8A"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 32,
-"vertex_data": PackedByteArray("+7AAAL4JAAD/fwAAAAAAAPiYAAB1AgAAA08AAL4JAAAGZwAAdQIAAH0lAAB9JQAA4jgAAJIVAAC+CQAAA08AAJIVAADiOAAAAAAAAP9/AAB1AgAABmcAAL4JAAD7sAAAdQIAAPiYAAADTwAAQPYAAH0lAACB2gAAkhUAABzHAADiOAAAbOoAAP9/AAD//wAABmcAAIn9AAD7sAAAQPYAAPiYAACJ/QAAQPYAAPuwAACB2gAAgdoAABzHAABs6gAAbOoAABzHAACB2gAAfSUAABzHAACSFQAAQPYAAANPAABs6gAA4jgAAP//AAD/fwAAif0AAAZnAACJ/QAA+JgAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_jw32o"]
-resource_name = "Plane_Cylinder"
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"attribute_data": PackedByteArray("+7C+Cf9/AAD4mHUCA0++CQZndQJ9JX0l4jiSFb4JA0+SFeI4AAD/f3UCBme+CfuwdQL4mANPQPZ9JYHakhUcx+I4bOr/f///BmeJ/fuwQPb4mIn9QPb7sIHagdocx2zqbOocx4HafSUcx5IVQPYDT2zq4jj///9/if0GZ4n9+Jg="),
-"format": 34896613399,
-"index_count": 90,
-"index_data": PackedByteArray("AAABAAIAAQADAAQAAAADAAEAAwAFAAYAAwAHAAUABQAHAAgAAAAHAAMABwAJAAoABwALAAkACQALAAwABwANAAsAAAANAAcACwAOAA8ACwANAA4ADgANABAADQARABIADQATABEAEQATABQADQAAABUADQAVABMAEwAWABcAEwAVABYAFgAVABgAGQAAABoAGwAAABkAFQAAABsAGwAZABwAFQAbAB0AHQAbAB4AFQAdAB8A"),
-"material": SubResource("StandardMaterial3D_gatsr"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 32,
-"vertex_data": PackedByteArray("+7AAAL4J/7//fwAAAAD/v/iYAAB1Av+/A08AAL4J/78GZwAAdQL/v30lAAB9Jf+/4jgAAJIV/7++CQAAA0//v5IVAADiOP+/AAAAAP9//791AgAABmf/v74JAAD7sP+/dQIAAPiY/78DTwAAQPb/v30lAACB2v+/khUAABzH/7/iOAAAbOr/v/9/AAD///+/BmcAAIn9/7/7sAAAQPb/v/iYAACJ/f+/QPYAAPuw/7+B2gAAgdr/vxzHAABs6v+/bOoAABzH/7+B2gAAfSX/vxzHAACSFf+/QPYAAANP/79s6gAA4jj/v///AAD/f/+/if0AAAZn/7+J/QAA+Jj/v////3////9/////f////3////9//v//f/7//3/+//9//v//f////3/+//9/////f/7//3////9/////f/7//3/+//9/////f////3////9/////f/7//3/+//9//v//f/7//3////9//v//f////3/+//9/////f/7//3/+//9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_oh285")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_r0du0"]
-size = Vector2(410, 10)
+size = Vector2(10, 512)
+subdivide_depth = 511
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50glp"]
 size = Vector3(10, 3.5, 1)
@@ -80,6 +47,7 @@ script = ExtResource("1_jw32o")
 params/color1 = Color(0.89758754, 0.3211661, 0, 1)
 params/color2 = Color(0.55676615, 0.04457993, 0.60915935, 1)
 params/color3 = Color(0, 0.5473388, 0.8350875, 1)
+params/road_curve_texture = SubResource("CurveTexture_bmxlf")
 params/road_movement = 1
 
 [node name="MainMusic" type="AudioStreamPlayer" parent="." unique_id=916895948]
@@ -127,15 +95,7 @@ directional_shadow_mode = 0
 
 [node name="Geometry" type="Node3D" parent="." unique_id=846631133]
 
-[node name="Grid" type="MeshInstance3D" parent="Geometry" unique_id=1166113162]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, -0.1, 0)
-material_override = SubResource("ShaderMaterial_4kpch")
-cast_shadow = 0
-mesh = SubResource("ArrayMesh_jw32o")
-skeleton = NodePath("")
-
 [node name="Road" type="MeshInstance3D" parent="Geometry" unique_id=1476972642]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 material_override = ExtResource("8_4kpch")
 mesh = SubResource("PlaneMesh_r0du0")
 skeleton = NodePath("../..")

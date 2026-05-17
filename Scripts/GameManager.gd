@@ -1,6 +1,8 @@
 extends Node3D
 
 
+
+
 @onready var menu: Node3D = $Menu
 @onready var grid: MeshInstance3D = $Geometry/Grid
 @onready var player: XROrigin3D = $Path3D/PathFollow3D/Player

@@ -1,23 +1,27 @@
 shader_type sky;
 
-uniform sampler2D horizon_color_tex : source_color;
-
-
-uniform float horizon_curve = 10.0;
-
-uniform float flare_size = 0.6;
-uniform float flare_int = 10.0;
-
-uniform bool lines = false;
-
 global uniform vec4 color1 : source_color;
 global uniform vec4 color2 : source_color;
 global uniform vec4 color3 : source_color;
+global uniform int road_movement;
+global uniform sampler2D road_curve_texture;
 
-uniform sampler3D noise;
+group_uniforms bg;
+	uniform float horizon_curve = 10.0;
+	uniform float flare_size = 0.6;
+	uniform float flare_int = 10.0;
+	uniform bool lines = false;
+	uniform sampler3D noise : filter_nearest;
+
+group_uniforms grid;
+	uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+	uniform float grid_scale = 1.35;
 
 
 void sky() {
+	// TODO
+	// remove magic numbers
+	
 	// Calculate Sun properties
 	float sun_angle = acos(dot(EYEDIR, LIGHT0_DIRECTION));
 	float sun_str = max(sign(sun_angle - LIGHT0_SIZE), 0.0);
@@ -42,22 +46,19 @@ void sky() {
 	if (lines)
 		sun_color = mix(sun_color, horizon_color, temp * pow(lines_str, 0.3));
 	
-	float a = texture(noise, vec3(EYEDIR.yz, TIME* 0.1)).r;
-	
-	//COLOR = vec3(1.0) * lines_str;
-	//COLOR = vec3(1.0) * (1.0 - clamp(acos(dot(EYEDIR.xyz, LIGHT0_DIRECTION.xyz)) / LIGHT0_SIZE, 0.0, 1.0));
-	//COLOR = vec3(1.0) * (acos(dot(normalize(LIGHT0_DIRECTION.zy), normalize(EYEDIR.zy)))) ;
-	COLOR = vec3(1.0) * lines_str;
-	//COLOR = texture(noise, EYEDIR + vec3(0.0, 0.3, 0.0) * TIME).rgb;
-	if (EYEDIR.y > -0.01)
-		COLOR = (mix(sun_color, horizon_color * pow(a, 0.1), sun_str) + pow(flare, flare_int) * color1.rgb) * (1.0 - 0.08 * (sin(EYEDIR.y * 500.0 + TIME * 16.) * 0.5 + 0.5));
-	else
-		COLOR = vec3(0.0);
-		
-		
-	
-	
-	
+	float noise_str = texture(noise, vec3(EYEDIR.yz, TIME* 0.1)).r;
 	
 
+	//COLOR = vec3(1.0) * lines_str;
+	
+	
+	if (EYEDIR.y > -0.01)
+		COLOR = (mix(sun_color, horizon_color * pow(noise_str, 0.1), sun_str) + pow(flare, flare_int) * color1.rgb) * (1.0 - 0.08 * (sin(EYEDIR.y * 500.0 + TIME * 16.) * 0.5 + 0.5));
+	else if (POSITION.y > -0.01) {
+		float a = (-0.01 - POSITION.y) / EYEDIR.y;
+		vec2 grid_uv = (a * EYEDIR.xz + POSITION.xz) * grid_scale - vec2(0.0, TIME) * float(road_movement);
+		COLOR = color3.rgb * texture(texture_albedo, grid_uv).r;
+	} else {
+		COLOR = vec3(0.0);
+	}
 }

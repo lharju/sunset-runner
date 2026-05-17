@@ -99,21 +99,25 @@ road_movement={
 "type": "int",
 "value": 0
 }
-color1={
-"type": "color",
-"value": Color(0, 0, 0, 1)
-}
 color2={
 "type": "color",
-"value": Color(0, 0, 0, 1)
+"value": Color(0, 1, 0, 1)
 }
 color3={
 "type": "color",
-"value": Color(0, 0, 0, 1)
+"value": Color(0, 0, 1, 1)
 }
 low_vection={
 "type": "bool",
 "value": false
+}
+color1={
+"type": "color",
+"value": Color(1, 0, 0, 1)
+}
+road_curve_texture={
+"type": "sampler2D",
+"value": ""
 }
 
 [xr]
