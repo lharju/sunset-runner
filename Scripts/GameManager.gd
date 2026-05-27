@@ -10,7 +10,7 @@ extends Node3D
 @onready var object_spawner: Marker3D = $Geometry/ObjectSpawner
 
 @onready var main_music: AudioStreamPlayer = $MainMusic
-@onready var shader_globals: ShaderGlobalsOverride = $ShaderGlobals
+@onready var shader_globals: ShaderGlobalsOverride = $Enviroment/ShaderGlobals
 
 
 enum States {NONE = 0 , CALIBRATION = 1, MENU = 2, PLAY = 3}

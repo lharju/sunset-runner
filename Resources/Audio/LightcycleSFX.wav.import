@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b1vlx82k286h7"
-path="res://.godot/imported/LightcycleSFX.wav-c387621abf93976dc8ff34871b1e5cd7.sample"
+path="res://.godot/imported/LightcycleSFX.wav-bae391d918780ee9d056c5aacc63e659.sample"
 
 [deps]
 
-source_file="res://Resources/LightcycleSFX.wav"
-dest_files=["res://.godot/imported/LightcycleSFX.wav-c387621abf93976dc8ff34871b1e5cd7.sample"]
+source_file="res://Resources/Audio/LightcycleSFX.wav"
+dest_files=["res://.godot/imported/LightcycleSFX.wav-bae391d918780ee9d056c5aacc63e659.sample"]
 
 [params]
 

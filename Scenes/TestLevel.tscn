@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dy2pp6ci41yc2"]
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_5ms4e"]
-[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="2_5ms4e"]
+[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/PlayerController.gd" id="2_5ms4e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y1jsw"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

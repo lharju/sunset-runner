@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://exwwkextub3h"
-path.s3tc="res://.godot/imported/grd_albedo.png-84da7b839d8cbfd56f9e483d906d56d1.s3tc.ctex"
-path.etc2="res://.godot/imported/grd_albedo.png-84da7b839d8cbfd56f9e483d906d56d1.etc2.ctex"
+uid="uid://dcrbbkdbtu64r"
+path.s3tc="res://.godot/imported/reticle.png-60f87c62a720f9dc6bf7f39e76cf5c97.s3tc.ctex"
+path.etc2="res://.godot/imported/reticle.png-60f87c62a720f9dc6bf7f39e76cf5c97.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/grd_albedo.png"
-dest_files=["res://.godot/imported/grd_albedo.png-84da7b839d8cbfd56f9e483d906d56d1.s3tc.ctex", "res://.godot/imported/grd_albedo.png-84da7b839d8cbfd56f9e483d906d56d1.etc2.ctex"]
+source_file="res://Resources/Materials/reticle.png"
+dest_files=["res://.godot/imported/reticle.png-60f87c62a720f9dc6bf7f39e76cf5c97.s3tc.ctex", "res://.godot/imported/reticle.png-60f87c62a720f9dc6bf7f39e76cf5c97.etc2.ctex"]
 
 [params]
 

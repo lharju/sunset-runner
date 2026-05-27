@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://c6fpwvyuo04jt" path="res://Scripts/Menu.gd" id="1_6pedr"]
-[ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Scripts/RichTextGhost.gd" id="2_syfuq"]
+[ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Scripts/RichTextEffects/RichTextGhost.gd" id="2_syfuq"]
 [ext_resource type="Shader" uid="uid://duegntyt6lgjx" path="res://Shaders/TitleText.gdshader" id="5_ma218"]
 
 [sub_resource type="FontVariation" id="FontVariation_s2c3o"]

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bio5nywsf1h7t"
-path="res://.godot/imported/Plane.glb-7ad894f94b3d10729753a41a6811ebfd.scn"
+uid="uid://72avkwlordxr"
+path="res://.godot/imported/LightCycle.glb-bef23eea2875c4c4fc8cc1d5a5f8555d.scn"
 
 [deps]
 
-source_file="res://Models/Plane.glb"
-dest_files=["res://.godot/imported/Plane.glb-7ad894f94b3d10729753a41a6811ebfd.scn"]
+source_file="res://Resources/Models/LightCycle.glb"
+dest_files=["res://.godot/imported/LightCycle.glb-bef23eea2875c4c4fc8cc1d5a5f8555d.scn"]
 
 [params]
 

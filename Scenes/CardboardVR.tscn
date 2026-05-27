@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://drfakj0pu768p"]
 
-[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/Main.gd" id="1_fdbg2"]
-[ext_resource type="Script" uid="uid://bkukhu46m616y" path="res://Scripts/ray_cast_3d.gd" id="2_3a4ce"]
+[ext_resource type="Script" uid="uid://c7fym82i1tgaa" path="res://Scripts/PlayerController.gd" id="1_fdbg2"]
+[ext_resource type="Script" uid="uid://bkukhu46m616y" path="res://Scripts/GazeCast.gd" id="2_3a4ce"]
 [ext_resource type="PackedScene" uid="uid://dcjlyl67s0wxe" path="res://Scenes/CalibButton.tscn" id="4_3a4ce"]
-[ext_resource type="Texture2D" uid="uid://dcrbbkdbtu64r" path="res://Resources/reticle.png" id="4_hd57e"]
+[ext_resource type="Texture2D" uid="uid://dcrbbkdbtu64r" path="res://Resources/Materials/reticle.png" id="4_hd57e"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_3a4ce"]
 viewport_path = NodePath("SubViewport")

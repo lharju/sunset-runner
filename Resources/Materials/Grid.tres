@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://br4l33upjtwmr"]
+
+[ext_resource type="Shader" uid="uid://6n6u2jtrxl2o" path="res://Shaders/Grid.gdshader" id="1_s8joh"]
+[ext_resource type="Texture2D" uid="uid://bn5ei7u4lplil" path="res://Resources/Materials/Grid.png" id="2_7t4jj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_s8joh")
+shader_parameter/texture_albedo = ExtResource("2_7t4jj")

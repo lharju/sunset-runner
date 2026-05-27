@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d4cnh60477a8v"
-path="res://.godot/imported/SunsetRunner_session.wav-60fb1f6df518e76cdcd1f0eccf422086.sample"
+path="res://.godot/imported/SunsetRunner_session.wav-252e0d77650cb4f8131daedae2aca429.sample"
 
 [deps]
 
-source_file="res://Resources/SunsetRunner_session.wav"
-dest_files=["res://.godot/imported/SunsetRunner_session.wav-60fb1f6df518e76cdcd1f0eccf422086.sample"]
+source_file="res://Resources/Audio/SunsetRunner_session.wav"
+dest_files=["res://.godot/imported/SunsetRunner_session.wav-252e0d77650cb4f8131daedae2aca429.sample"]
 
 [params]
 

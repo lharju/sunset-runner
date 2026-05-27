@@ -1,29 +1,30 @@
 [gd_resource type="Sky" format=3 uid="uid://c1jcmlculciew"]
 
-[ext_resource type="Shader" uid="uid://tjkl6m7iug61" path="res://Shaders/Sky.gdshader" id="1_1mb4p"]
-[ext_resource type="Texture2D" uid="uid://bn5ei7u4lplil" path="res://Materials/grid_colorize_2.png" id="2_xsj0c"]
+[ext_resource type="Shader" uid="uid://bcu3rfjcw8lnf" path="res://Shaders/Sky.gdshader" id="1_xsj0c"]
+[ext_resource type="Texture2D" uid="uid://bn5ei7u4lplil" path="res://Resources/Materials/Grid.png" id="2_xsj0c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1mb4p"]
-frequency = 0.045
+domain_warp_enabled = true
 metadata/_preview_in_3d_space_ = true
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_xsj0c"]
-width = 128
-height = 128
-depth = 128
 noise = SubResource("FastNoiseLite_1mb4p")
 seamless = true
-seamless_blend_skirt = 0.5
+seamless_blend_skirt = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
-shader = ExtResource("1_1mb4p")
-shader_parameter/horizon_curve = 4.18
-shader_parameter/flare_size = 1.355
-shader_parameter/flare_int = 10.0
-shader_parameter/lines = false
+shader = ExtResource("1_xsj0c")
+shader_parameter/sun_pos = Vector2(0, 0.31)
+shader_parameter/sun_size = 0.435
+shader_parameter/sun_energy = 1.59
+shader_parameter/flare_size = 0.6
+shader_parameter/flare_int = 17.89
+shader_parameter/horizon_curve = 3.06
+shader_parameter/line_str = 0.255
 shader_parameter/noise = SubResource("NoiseTexture3D_xsj0c")
 shader_parameter/texture_albedo = ExtResource("2_xsj0c")
 shader_parameter/grid_scale = 0.1
+shader_parameter/grid_height = 0.0
 
 [resource]
 resource_local_to_scene = true

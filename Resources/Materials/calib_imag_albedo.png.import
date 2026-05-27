@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhgk8n7kd08s0"
-path.s3tc="res://.godot/imported/q_albedo.png-d7c428145baf6cfae3f0c2df41f8c280.s3tc.ctex"
-path.etc2="res://.godot/imported/q_albedo.png-d7c428145baf6cfae3f0c2df41f8c280.etc2.ctex"
+uid="uid://dm8mpeswcxw6s"
+path.s3tc="res://.godot/imported/calib_imag_albedo.png-896310e9fada9612140441ec54db3341.s3tc.ctex"
+path.etc2="res://.godot/imported/calib_imag_albedo.png-896310e9fada9612140441ec54db3341.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Materials/q_albedo.png"
-dest_files=["res://.godot/imported/q_albedo.png-d7c428145baf6cfae3f0c2df41f8c280.s3tc.ctex", "res://.godot/imported/q_albedo.png-d7c428145baf6cfae3f0c2df41f8c280.etc2.ctex"]
+source_file="res://Resources/Materials/calib_imag_albedo.png"
+dest_files=["res://.godot/imported/calib_imag_albedo.png-896310e9fada9612140441ec54db3341.s3tc.ctex", "res://.godot/imported/calib_imag_albedo.png-896310e9fada9612140441ec54db3341.etc2.ctex"]
 
 [params]
 

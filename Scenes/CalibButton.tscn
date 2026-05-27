@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcjlyl67s0wxe"]
+[gd_scene format=3 uid="uid://dcjlyl67s0wxe"]
 
 [ext_resource type="Script" uid="uid://dhbl2lqs3jtvk" path="res://Scripts/CalibButton.gd" id="1_vyb28"]
-[ext_resource type="Texture2D" uid="uid://dm8mpeswcxw6s" path="res://Resources/calib_imag_albedo.png" id="2_8dihv"]
+[ext_resource type="Texture2D" uid="uid://dm8mpeswcxw6s" path="res://Resources/Materials/calib_imag_albedo.png" id="2_8dihv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8dihv"]
 viewport_path = NodePath("SubViewport")
@@ -14,17 +14,17 @@ gradient = SubResource("Gradient_8dihv")
 width = 1
 height = 1
 
-[node name="CalibButton" type="Sprite3D"]
+[node name="CalibButton" type="Sprite3D" unique_id=1068899825]
 no_depth_test = true
 render_priority = 3
 texture = SubResource("ViewportTexture_8dihv")
 script = ExtResource("1_vyb28")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1510387116]
 transparent_bg = true
 size = Vector2i(64, 64)
 
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1286583177]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,7 +34,7 @@ max_value = 1.0
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="SubViewport"]
+[node name="Label" type="Label" parent="SubViewport" unique_id=1733397051]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,20 +45,20 @@ text = "Foobar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1306668972]
 process_callback = 0
 wait_time = 3.0
 one_shot = true
 
-[node name="CalibrationImage" type="Sprite3D" parent="."]
+[node name="CalibrationImage" type="Sprite3D" parent="." unique_id=329745630]
 pixel_size = 0.0025
 no_depth_test = true
 render_priority = 2
 texture = ExtResource("2_8dihv")
 
-[node name="Sprite3D" type="Sprite3D" parent="CalibrationImage"]
+[node name="Sprite3D" type="Sprite3D" parent="CalibrationImage" unique_id=813021077]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05915749)
-pixel_size = 12.3055
+pixel_size = 35.0
 no_depth_test = true
 render_priority = 1
 texture = SubResource("GradientTexture2D_rurgj")

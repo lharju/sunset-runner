@@ -35,6 +35,16 @@ window/size/viewport_width=2380
 window/size/viewport_height=1080
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://Resources/": "red",
+"res://Resources/Models/": "red",
+"res://Scenes/": "red",
+"res://Scripts/": "red",
+"res://Shaders/": "red"
+}
+
 [gui]
 
 theme/custom="uid://pfljj2xq8p2w"
@@ -89,6 +99,7 @@ sensors/enable_magnetometer=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
+limits/time/time_rollover_secs=32.0
 shading/overrides/force_vertex_shading=true
 anti_aliasing/quality/msaa_3d=3
 vrs/mode=2
@@ -107,17 +118,25 @@ color3={
 "type": "color",
 "value": Color(0, 0, 1, 1)
 }
-low_vection={
-"type": "bool",
-"value": false
-}
 color1={
 "type": "color",
 "value": Color(1, 0, 0, 1)
 }
 road_curve_texture={
 "type": "sampler2D",
-"value": ""
+"value": "::vy5pj"
+}
+road_deviation={
+"type": "float",
+"value": 0.0
+}
+road_scale={
+"type": "float",
+"value": 0.0
+}
+road_speed={
+"type": "float",
+"value": 0.0
 }
 
 [xr]

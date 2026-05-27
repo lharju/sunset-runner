@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lbcqo4fj8ur6" path="res://Scripts/DodgeObject.gd" id="1_vjvoq"]
 [ext_resource type="PackedScene" uid="uid://cme4oib8nnspy" path="res://Scenes/LightCycle.tscn" id="2_hjyyc"]
-[ext_resource type="AudioStream" uid="uid://b1vlx82k286h7" path="res://Resources/LightcycleSFX.wav" id="3_jdcnq"]
+[ext_resource type="AudioStream" uid="uid://b1vlx82k286h7" path="res://Resources/Audio/LightcycleSFX.wav" id="3_jdcnq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8au1"]
 size = Vector3(1, 1.3496094, 3.0249023)
