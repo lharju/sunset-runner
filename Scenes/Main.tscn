@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bdj7aygik5qe0" path="res://Scripts/GameManager.gd" id="1_jw32o"]
 [ext_resource type="PackedScene" uid="uid://d3ed2d3ucnq8q" path="res://Scenes/Menu.tscn" id="1_v1gob"]
+[ext_resource type="Script" uid="uid://bmnq3g8fbwtko" path="res://Scripts/enviroment.gd" id="3_4kpch"]
 [ext_resource type="Script" uid="uid://biakqi0qkdj82" path="res://Scripts/ObjectSpawner.gd" id="3_rgh2o"]
 [ext_resource type="Sky" uid="uid://c1jcmlculciew" path="res://Resources/Materials/Sky.tres" id="3_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://drfakj0pu768p" path="res://Scenes/CardboardVR.tscn" id="4_rgh2o"]
@@ -11,6 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://pg23ipdq2j8t" path="res://Scenes/DodgeObject.tscn" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://cyw6lm3w4ni6e" path="res://Scripts/Screenshot.gd" id="11_4kpch"]
 
+[sub_resource type="Curve" id="Curve_vy5pj"]
+_data = [Vector2(0.052693658, 0.031677645), 0.0, 0.0, 0, 0, Vector2(0.19553944, 0.93648267), 0.0, 0.0, 0, 0, Vector2(0.33839622, 0.32764235), 0.0, 0.0, 0, 0, Vector2(0.48125574, 0.71258783), 0.0, 0.0, 0, 0, Vector2(0.6241225, 0.6242041), 0.0, 0.0, 0, 0, Vector2(0.7669873, 0.329531), 0.0, 0.0, 0, 0, Vector2(0.90983, 0.5309336), 0.0, 0.0, 0, 0]
+point_count = 7
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
 [sub_resource type="Environment" id="Environment_uu6xs"]
 background_mode = 2
 sky = ExtResource("3_vy5pj")
@@ -19,20 +26,8 @@ reflected_light_source = 1
 tonemap_mode = 2
 glow_bloom = 0.15
 
-[sub_resource type="Curve" id="Curve_vy5pj"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0.006234415, 0.284572), 0.0, 0.0, 0, 0, Vector2(0.1159601, -0.31467545), 0.0, 0.0, 0, 0, Vector2(0.25561097, 0.22342432), 0.0, 0.0, 0, 0, Vector2(0.39027432, -0.21683908), 0.0, 0.0, 0, 0, Vector2(0.5947631, 0.2723425), 0.0, 0.0, 0, 0, Vector2(0.7269327, -1), 0.0, 0.0, 0, 0, Vector2(0.83915216, 1), 0.0, 0.0, 0, 0, Vector2(0.9688279, -1), 0.0, 0.0, 0, 0]
-point_count = 8
-
 [sub_resource type="CurveTexture" id="CurveTexture_bmxlf"]
 curve = SubResource("Curve_vy5pj")
-
-[sub_resource type="Curve3D" id="Curve3D_r0du0"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vy5pj"]
 size = Vector2(512, 512)
@@ -42,7 +37,7 @@ size = Vector2(10, 512)
 subdivide_depth = 511
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50glp"]
-size = Vector3(50, 3.5, 7.899658)
+size = Vector3(256, 3.5, 8)
 
 [node name="Main" type="Node3D" unique_id=634515422]
 script = ExtResource("1_jw32o")
@@ -57,6 +52,12 @@ one_shot = true
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=896048579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 57.92315, 0)
+script = ExtResource("3_4kpch")
+animate = true
+curve = SubResource("Curve_vy5pj")
+point_count = 7
+visual_coeff = 32.0
+speed = 0.005
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment" unique_id=1509616680]
 environment = SubResource("Environment_uu6xs")
@@ -71,19 +72,14 @@ params/color1 = Color(0.89758754, 0.3211661, 0, 1)
 params/color2 = Color(0.55676615, 0.04457993, 0.60915935, 1)
 params/color3 = Color(0, 0.5473388, 0.8350875, 1)
 params/road_curve_texture = SubResource("CurveTexture_bmxlf")
+params/road_deviation = 102.43
 params/road_movement = 1
-params/road_scale = 17.72
-params/road_speed = 0.495
+params/road_scale = 16.0
+params/road_speed = 0.064
+params/time = 19.651125444500153
 
-[node name="Path3D" type="Path3D" parent="." unique_id=2047766038]
-curve = SubResource("Curve3D_r0du0")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=715003413]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-progress = 4.0
-
-[node name="Player" parent="Path3D/PathFollow3D" unique_id=1907890505 instance=ExtResource("4_rgh2o")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+[node name="Player" parent="Enviroment" unique_id=1907890505 instance=ExtResource("4_rgh2o")]
+transform = Transform3D(1, 0, 2.3803182e-13, 0, 0.9999945, 0, 2.3803182e-13, 0, 0.9999945, 0.00018243272, -57.92315, 0)
 display_to_lens = 4.2
 
 [node name="Menu" parent="." unique_id=413871278 instance=ExtResource("1_v1gob")]
@@ -92,7 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15408301)
 [node name="Geometry" type="Node3D" parent="." unique_id=846631133]
 
 [node name="ObjectSpawner" type="Marker3D" parent="Geometry" unique_id=844873490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 script = ExtResource("3_rgh2o")
 
 [node name="Timer" type="Timer" parent="Geometry/ObjectSpawner" unique_id=922158353]
@@ -117,6 +113,7 @@ debug_color = Color(0, 0.6, 0.69803923, 0.92941177)
 
 [node name="ScreenshotCamera" type="SubViewport" parent="." unique_id=1714874966]
 msaa_3d = 3
+size = Vector2i(630, 500)
 script = ExtResource("11_4kpch")
 
 [node name="Camera3D" type="Camera3D" parent="ScreenshotCamera" unique_id=549080432]
@@ -126,8 +123,8 @@ fov = 76.4
 [node name="DodgeObject" parent="." unique_id=1014381408 instance=ExtResource("10_bmxlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.214615, 239.82571)
 
-[connection signal="calibration_done" from="Path3D/PathFollow3D/Player" to="." method="_on_player_calibration_done"]
-[connection signal="is_hit" from="Path3D/PathFollow3D/Player" to="." method="_on_xr_origin_3d_is_hit"]
+[connection signal="calibration_done" from="Enviroment/Player" to="." method="_on_player_calibration_done"]
+[connection signal="is_hit" from="Enviroment/Player" to="." method="_on_xr_origin_3d_is_hit"]
 [connection signal="calibrate" from="Menu" to="." method="_on_menu_calibrate"]
 [connection signal="music" from="Menu" to="." method="_on_menu_music"]
 [connection signal="play" from="Menu" to="." method="_on_menu_play"]

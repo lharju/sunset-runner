@@ -6,6 +6,7 @@ global uniform float road_deviation;
 global uniform int road_movement;
 global uniform float road_scale;
 global uniform float road_speed;
+global uniform float time;
 
 vec3 rrf(vec3 v, vec3 k, float theta) {
 	// Rodriques rotation formula
@@ -23,5 +24,5 @@ vec3 calculate_normal(vec3 eyedir, vec3 light_dir, float light_size){
 }
 
 vec2 road_uv(vec2 uv) {
-	return (uv - 0.5) * road_scale + road_speed * vec2(0.0, -TIME) * float(road_movement);;
+	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement);;
 }

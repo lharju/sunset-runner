@@ -9,6 +9,13 @@ extends XROrigin3D
 @export var k2: float = 0.215
 @export var oversample: float = 1.5
 
+@export_group("Movement")
+@export var velocity: float = 4.0
+@export var limit: float = 32.0
+@export var curve: Curve = null
+
+
+
 
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var xr_camera_3d: XRCamera3D = $XRCamera3D
@@ -16,9 +23,8 @@ extends XROrigin3D
 @onready var gaze_raycast: RayCast3D = $GazeRaycast
 @onready var calib_button: Sprite3D = $GazeRaycast/CalibButton
 
-@onready var path: PathFollow3D = get_parent()
-
 @onready var cursor: Sprite3D = $GazeRaycast/Cursor
+
 
 
 
@@ -34,6 +40,7 @@ var cursor_on: bool = true:
 		cursor.visible = value
 
 signal is_hit()
+signal is_derailed()
 signal calibration_done()
 
 func _ready() -> void:
@@ -65,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	var roll: float = gaze_raycast.global_basis.y.dot(Vector3.RIGHT)
 
 
+	## Handle player state transitions
 	match next_state:
 		States.NONE:
 			pass
@@ -86,6 +94,7 @@ func _physics_process(delta: float) -> void:
 	match game_state:
 		States.CALIBRATION:
 			if OS.has_feature("pc"):
+				## running on pc, skip calibration
 				
 				calibration_done.emit()
 				return
@@ -111,12 +120,12 @@ func _physics_process(delta: float) -> void:
 					XRInterfaceManager.save_properties()
 					calibration_done.emit()
 		States.PLAY:
-			if roll < 0.05:
-				path.progress_ratio = move_toward(path.progress_ratio, 0, abs(roll) * delta * 2.0)
-			if roll > 0.05:
-				path.progress_ratio = move_toward(path.progress_ratio, 1, abs(roll) * delta * 2.0)
+			position.x += roll * delta * 4.0
+			## TODO, handle derailing
+			
 		States.MENU:
-			path.progress_ratio = move_toward(path.progress_ratio, 0.5,  delta * 0.25)
+			
+			position.x = move_toward(position.x, 0.0, delta * 0.25)
 
 func _exit_tree() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

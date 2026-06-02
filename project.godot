@@ -138,6 +138,10 @@ road_speed={
 "type": "float",
 "value": 0.0
 }
+time={
+"type": "float",
+"value": 0.0
+}
 
 [xr]
 

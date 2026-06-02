@@ -4,7 +4,8 @@ render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
 #include "utils.gdshaderinc"
 
 void vertex() {
-	VERTEX.x += texture(road_curve_texture, vec2(UV.y, 0.0)).r * road_deviation;
+	vec2 vw = vec2(UV.y, 0.0) * 0.5 + 0.25;
+	VERTEX.x += (texture(road_curve_texture, vw).r * 2.0 - 1.0) * road_deviation;
 }
 
 void fragment() {
