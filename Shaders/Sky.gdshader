@@ -1,7 +1,24 @@
 shader_type sky;
 render_mode use_debanding;
 
-#include "utils.gdshaderinc"
+global uniform vec4 color1 : source_color;
+global uniform vec4 color2 : source_color;
+global uniform vec4 color3 : source_color;
+global uniform sampler2D road_curve_texture : repeat_disable;
+global uniform float road_deviation;
+global uniform int road_movement;
+global uniform float road_scale;
+global uniform float road_speed;
+global uniform float time;
+global uniform int low_vection;
+
+vec2 road_uv(vec2 uv) {
+	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * road_scale;
+}
+
+vec2 grid_uv(vec2 uv) {
+	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * float(low_vection)* road_scale;
+}
 
 group_uniforms sun;
 	uniform vec2 sun_pos = vec2(0.0);
@@ -13,6 +30,8 @@ group_uniforms sun;
 group_uniforms background;
 	uniform float horizon_curve = 4.0;
 	uniform float line_str = 0.15;
+	uniform float line_density = 100.0;
+	uniform float line_freq = 4.;
 	uniform sampler3D noise : filter_nearest;
 
 group_uniforms grid;
@@ -20,13 +39,6 @@ group_uniforms grid;
 	uniform float grid_scale = 1.35;
 	uniform float grid_height = -0.01;
 
-
-
-
-
-
-
-const float wall_d = 1.0;
 
 void sky() {
 	// TODO
@@ -43,7 +55,7 @@ void sky() {
 	float sun_dist = distance(sun_pos, wall_xy);
 	float sun_str = step(sun_dist, sun_size) * step(0.0,-EYEDIR.z);
 	vec3 sun_color = color1.rgb * sun_energy;
-	float flare = clamp(1.0 - abs(sun_dist - sun_size), 0.0, 1.0) * step(0.0,-EYEDIR.z);
+	float flare = clamp(1.0 - abs(sun_dist - sun_size) / flare_size, 0.0, 1.0) * step(0.0,-EYEDIR.z);
 	flare = pow(flare, flare_int);
 	
 	// Calculate background color
@@ -57,15 +69,13 @@ void sky() {
 	
 	// ==== CALCULATE NORMAL FOR SUN ==== //
 	vec2 sun_offset = (wall_xy - sun_pos)/ sun_size;
-	vec3 normal = rrf(vec3(0.0, 0.0, 1.0), vec3(1.0, 0.0, 0.0), asin(sun_offset.x));
-	normal = rrf(normal, vec3(0.0, 1.0, 0.0), asin(sun_offset.y));
 	
-	vec2 magic = normal.xy * sun_str;
 	
-	float lines = 1.0 - (sin(wall_uv.y* 300. + TIME * TAU *2.0- magic.x * 32.) * 0.5 + 0.5) * line_str;
+	float lines = 1.0 - (sin(wall_uv.y * line_density + TIME * TAU * line_freq ) * 0.5 + 0.5) * line_str;
 
 	vec3 color = (mix(background_color, sun_color,  sun_str) + flare * color1.rgb);
-
+	//color -
+	COLOR = vec3(1.0) * flare;
 	COLOR = color * lines;
 
 }

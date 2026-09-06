@@ -11,7 +11,7 @@ extends XROrigin3D
 
 @export_group("Movement")
 @export var velocity: float = 4.0
-@export var limit: float = 32.0
+@export var deviation: float = 10.0
 @export var curve: Curve = null
 
 
@@ -120,8 +120,13 @@ func _physics_process(delta: float) -> void:
 					XRInterfaceManager.save_properties()
 					calibration_done.emit()
 		States.PLAY:
-			position.x += roll * delta * 4.0
+			position.x += roll * delta * velocity
 			## TODO, handle derailing
+			var s: float = (curve.sample(0.5) * 2.0 - 1.0) * deviation
+			if self.global_position.x < -5 + s or self.global_position.x > 5 + s:
+				AndroidManager.vibrate()
+				position.x = 0
+				is_derailed.emit()
 			
 		States.MENU:
 			
@@ -136,4 +141,5 @@ func _on_calib_button_is_pressed() -> void:
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	_body.explode(false)
 	AndroidManager.vibrate()
+	position.x = 0
 	is_hit.emit()

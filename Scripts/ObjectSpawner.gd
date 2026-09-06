@@ -6,10 +6,11 @@ var dodge_object_scn: PackedScene = preload("res://Scenes/DodgeObject.tscn")
 @export var speed: float = 80
 @export var time: float
 
-
 var all_positions: Array = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
 var available_positions: Array = []
 
+var curve: Curve = null
+var deviation: float = 0.0
 
 func enable(new_speed, new_time) -> void:
 	self.speed = new_speed
@@ -25,12 +26,19 @@ func disable() -> void:
 			n.explode(true) 
 
 func _on_timer_timeout() -> void:
-	var object: CharacterBody3D = dodge_object_scn.instantiate()
 	
 	if available_positions.size() == 0:
 		available_positions = all_positions.duplicate()
 		available_positions.shuffle()
 		
+	var offset = available_positions.pop_front()
+		
+	var object: CharacterBody3D = dodge_object_scn.instantiate()
+	object.curve = curve
+	object.deviation = deviation
+	object.offset = offset
+	
+	
 	self.add_child(object)
-	object.global_position = self.global_position + Vector3(available_positions.pop_front(), 0, 0)
+	object.global_position = self.global_position
 	object.velocity.z = speed

@@ -14,13 +14,15 @@ seamless_blend_skirt = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu6xs"]
 shader = ExtResource("1_xsj0c")
-shader_parameter/sun_pos = Vector2(0, 0.31)
-shader_parameter/sun_size = 0.435
-shader_parameter/sun_energy = 1.59
-shader_parameter/flare_size = 0.6
-shader_parameter/flare_int = 17.89
-shader_parameter/horizon_curve = 3.06
-shader_parameter/line_str = 0.255
+shader_parameter/sun_pos = Vector2(0, 0.315)
+shader_parameter/sun_size = 0.5
+shader_parameter/sun_energy = 1.0
+shader_parameter/flare_size = 5.365
+shader_parameter/flare_int = 32.0
+shader_parameter/horizon_curve = 3.0
+shader_parameter/line_str = 0.12
+shader_parameter/line_density = 300.0
+shader_parameter/line_freq = 4.0
 shader_parameter/noise = SubResource("NoiseTexture3D_xsj0c")
 shader_parameter/texture_albedo = ExtResource("2_xsj0c")
 shader_parameter/grid_scale = 0.1

@@ -28,6 +28,7 @@ buses/default_bus_layout="uid://cyiuomki4oa7j"
 
 XRInterfaceManager="*uid://jd51p1p6mquy"
 AndroidManager="*uid://bqki05isaih84"
+Globals="*uid://g7urdfmpm6lk"
 
 [display]
 
@@ -44,10 +45,6 @@ folder_colors={
 "res://Scripts/": "red",
 "res://Shaders/": "red"
 }
-
-[gui]
-
-theme/custom="uid://pfljj2xq8p2w"
 
 [input]
 
@@ -141,6 +138,10 @@ road_speed={
 time={
 "type": "float",
 "value": 0.0
+}
+low_vection={
+"type": "int",
+"value": 1
 }
 
 [xr]

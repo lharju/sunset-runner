@@ -10,6 +10,9 @@ var pitch_range: float = 0.5
 @onready var light_cycle: Node3D = $LightCycle
 @onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+var curve: Curve = null
+var deviation: float = 0.0
+var offset: float = 0.0
 
 func explode(of: bool):
 	if not of:
@@ -27,6 +30,11 @@ func explode(of: bool):
 	
 	self.queue_free()
 	
+
+func map_z_to_x():
+	var sample: float = remap(self.global_position.z, -256, 256, 0.25, 0.75)
+	self.global_position.x = (curve.sample(sample) * 2.0 - 1.0) * deviation + offset
+
 
 func _ready() -> void:
 	audio_stream_player_3d.pitch_scale = 1.0 + randf_range(-pitch_range, pitch_range)
@@ -47,6 +55,6 @@ func _physics_process(_delta: float) -> void:
 		explode(false)
 		return
 	move_and_slide()
-	
+	map_z_to_x()
 	
 		
