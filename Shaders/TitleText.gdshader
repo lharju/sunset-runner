@@ -1,8 +1,7 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode unshaded, depth_test_disabled;
 
 uniform sampler2D vtexture : source_color, filter_nearest_mipmap;
-
 
 global uniform vec4 color1 : source_color;
 global uniform vec4 color2 : source_color;

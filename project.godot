@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Sunset Runner"
 run/main_scene="uid://be2v18ieqet5c"
-config/features=PackedStringArray("4.6", "Mobile")
+config/features=PackedStringArray("4.7", "Mobile")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="uid://btaf0ui4kj4d7"
 
@@ -96,7 +96,7 @@ sensors/enable_magnetometer=true
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
-limits/time/time_rollover_secs=32.0
+limits/time/time_rollover_secs=64.0
 shading/overrides/force_vertex_shading=true
 anti_aliasing/quality/msaa_3d=3
 vrs/mode=2

@@ -9,10 +9,15 @@ global uniform float road_speed;
 global uniform float time;
 global uniform int low_vection;
 
+
 vec2 road_uv(vec2 uv) {
 	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * road_scale;
 }
 
 vec2 grid_uv(vec2 uv) {
 	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * float(low_vection)* road_scale;
+}
+
+float front_slope(float y) {
+	return pow(clamp(1.0 - y * 2.0, 0.0, 1.0), 2.) * 16.;
 }

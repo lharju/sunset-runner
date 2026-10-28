@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://x15y4mbsli45" path="res://Scenes/ButtonVR.tscn" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://c6fpwvyuo04jt" path="res://Scripts/Menu.gd" id="1_6pedr"]
+[ext_resource type="Shader" uid="uid://dg45wonljamun" path="res://Shaders/Outline.gdshader" id="2_ma218"]
 [ext_resource type="Script" uid="uid://cofigao63bi46" path="res://Scripts/RichTextEffects/RichTextGhost.gd" id="2_syfuq"]
 [ext_resource type="Shader" uid="uid://duegntyt6lgjx" path="res://Shaders/TitleText.gdshader" id="5_ma218"]
 
@@ -9,8 +10,13 @@
 spacing_top = -35
 spacing_bottom = -18
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jcrr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4wy56"]
 render_priority = 0
+shader = ExtResource("2_ma218")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jcrr"]
+render_priority = 1
+next_pass = SubResource("ShaderMaterial_4wy56")
 shader = ExtResource("5_ma218")
 
 [sub_resource type="TextMesh" id="TextMesh_ma218"]
@@ -19,13 +25,6 @@ text = "SUNSET
 RUNNER"
 font = SubResource("FontVariation_s2c3o")
 font_size = 94
-depth = 0.1
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_s2c3o"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ma218"]
-viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_idohh"]
 viewport_path = NodePath("SubViewport")
@@ -39,6 +38,12 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_aobxe"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qki4b"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_sjh0l"]
 viewport_path = NodePath("ReplayMenu/New/SubViewport")
 
@@ -46,10 +51,10 @@ viewport_path = NodePath("ReplayMenu/New/SubViewport")
 script = ExtResource("2_syfuq")
 metadata/_custom_type_script = "uid://cofigao63bi46"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ab40c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_byewe"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qki4b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8aa6"]
 viewport_path = NodePath("SubViewport")
 
 [node name="Menu" type="Node3D" unique_id=2102618]
@@ -73,7 +78,7 @@ text = "Settings"
 
 [node name="Calibrate" parent="MainMenu/Settings" unique_id=574086849 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_s2c3o")
+texture = SubResource("ViewportTexture_idohh")
 text = "Calibrate"
 
 [node name="Label" parent="MainMenu/Settings/Calibrate/SubViewport" parent_id_path=PackedInt32Array(574086849, 70064913) index="1" unique_id=267439897]
@@ -81,7 +86,7 @@ text = "Calibrate"
 
 [node name="Music" parent="MainMenu/Settings" unique_id=427707089 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_ma218")
+texture = SubResource("ViewportTexture_wfhf6")
 text = "Cursor"
 
 [node name="Label" parent="MainMenu/Settings/Music/SubViewport" parent_id_path=PackedInt32Array(427707089, 70064913) index="1" unique_id=267439897]
@@ -102,7 +107,7 @@ button_mask = 0
 
 [node name="Vection" parent="MainMenu/Settings" unique_id=1280319805 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_idohh")
+texture = SubResource("ViewportTexture_3jcrr")
 text = "Cursor"
 
 [node name="Label" parent="MainMenu/Settings/Vection/SubViewport" parent_id_path=PackedInt32Array(1280319805, 70064913) index="1" unique_id=267439897]
@@ -126,7 +131,7 @@ text = "Play"
 
 [node name="PlayEasy" parent="MainMenu/Play" unique_id=1643717761 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-texture = SubResource("ViewportTexture_wfhf6")
+texture = SubResource("ViewportTexture_aobxe")
 text = "Easy"
 
 [node name="SubViewport" parent="MainMenu/Play/PlayEasy" index="0" unique_id=70064913]
@@ -137,7 +142,7 @@ text = "Easy"
 
 [node name="PlayMedium" parent="MainMenu/Play" unique_id=81703134 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-texture = SubResource("ViewportTexture_3jcrr")
+texture = SubResource("ViewportTexture_ab40c")
 text = "Medium"
 
 [node name="SubViewport" parent="MainMenu/Play/PlayMedium" index="0" unique_id=70064913]
@@ -148,7 +153,7 @@ text = "Medium"
 
 [node name="PlayHard" parent="MainMenu/Play" unique_id=1940012537 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
-texture = SubResource("ViewportTexture_aobxe")
+texture = SubResource("ViewportTexture_qki4b")
 text = "Hard"
 
 [node name="Label" parent="MainMenu/Play/PlayHard/SubViewport" parent_id_path=PackedInt32Array(1940012537, 70064913) index="1" unique_id=267439897]
@@ -211,7 +216,7 @@ text = "0"
 
 [node name="PlayAgain" parent="ReplayMenu" unique_id=47870876 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1.2, 0)
-texture = SubResource("ViewportTexture_ab40c")
+texture = SubResource("ViewportTexture_byewe")
 text = "Play
 Again"
 
@@ -221,7 +226,7 @@ Again"
 
 [node name="BackToMenu" parent="ReplayMenu" unique_id=1281565371 instance=ExtResource("1_3kf3n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.2, 0)
-texture = SubResource("ViewportTexture_qki4b")
+texture = SubResource("ViewportTexture_a8aa6")
 text = "Back To
 Menu"
 

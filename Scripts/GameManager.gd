@@ -54,7 +54,7 @@ func _clear_points():
 	
 	for i: int in range(point_count):
 		var x: float = (i / float(point_count))
-		var y: float = 0.5 if x > 0.25 else randf()
+		var y: float = 0.5 if x > 0.2 else randf()
 		var pos: Vector2 = Vector2(x, y)
 		curve.add_point(pos)
 

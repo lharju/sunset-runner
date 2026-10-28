@@ -1,24 +1,7 @@
 shader_type sky;
 render_mode use_debanding;
 
-global uniform vec4 color1 : source_color;
-global uniform vec4 color2 : source_color;
-global uniform vec4 color3 : source_color;
-global uniform sampler2D road_curve_texture : repeat_disable;
-global uniform float road_deviation;
-global uniform int road_movement;
-global uniform float road_scale;
-global uniform float road_speed;
-global uniform float time;
-global uniform int low_vection;
-
-vec2 road_uv(vec2 uv) {
-	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * road_scale;
-}
-
-vec2 grid_uv(vec2 uv) {
-	return (uv - 0.5) * road_scale - road_speed * vec2(0.0, time) * float(road_movement) * float(low_vection)* road_scale;
-}
+#include "utils.gdshaderinc"
 
 group_uniforms sun;
 	uniform vec2 sun_pos = vec2(0.0);
@@ -44,8 +27,6 @@ void sky() {
 	// TODO
 	// remove magic numbers
 	
-
-		
 	vec2 wall_xy = EYEDIR.xy / EYEDIR.z * sign(EYEDIR.z);
 	vec2 wall_zy = EYEDIR.zy / EYEDIR.x * sign(EYEDIR.x);
 	vec2 wall_xz = EYEDIR.xz / EYEDIR.y * sign(EYEDIR.y);
@@ -53,28 +34,21 @@ void sky() {
 	
 	// Calculate Sun properties
 	float sun_dist = distance(sun_pos, wall_xy);
-	float sun_str = step(sun_dist, sun_size) * step(0.0,-EYEDIR.z);
+	float sun_str = step(sun_dist, sun_size) * step(0.0, -EYEDIR.z);
 	vec3 sun_color = color1.rgb * sun_energy;
 	float flare = clamp(1.0 - abs(sun_dist - sun_size) / flare_size, 0.0, 1.0) * step(0.0,-EYEDIR.z);
 	flare = pow(flare, flare_int);
 	
 	// Calculate background color
-	float ratio = clamp(EYEDIR.y * horizon_curve, 0.0, 1.0); // for mixing horizon colors
-	float top_fade = pow(1.0 - clamp(EYEDIR.y, 0.0, 1.0), horizon_curve); // for fagding top to black
-	float noise_str = texture(noise, vec3(EYEDIR.yz, TIME / 8.0)).r; // randomness in bg
+	float ratio = clamp(EYEDIR.y * horizon_curve, 0.0, 1.0);				// for mixing horizon colors
+	float top_fade = pow(1.0 - clamp(EYEDIR.y, 0.0, 1.0), horizon_curve);	// for fagding top to black
+	float noise_str = texture(noise, vec3(EYEDIR.yz, TIME / 8.0)).r;		// randomness in bg
 	vec3 background_color = mix(color2.rgb, color3.rgb, ratio) * top_fade * pow(noise_str, 0.4);
 		
-	// Render background and sun
-
-	
-	// ==== CALCULATE NORMAL FOR SUN ==== //
 	vec2 sun_offset = (wall_xy - sun_pos)/ sun_size;
-	
-	
 	float lines = 1.0 - (sin(wall_uv.y * line_density + TIME * TAU * line_freq ) * 0.5 + 0.5) * line_str;
 
 	vec3 color = (mix(background_color, sun_color,  sun_str) + flare * color1.rgb);
-	//color -
 	COLOR = vec3(1.0) * flare;
 	COLOR = color * lines;
 

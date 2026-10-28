@@ -13,8 +13,8 @@
 [ext_resource type="Script" uid="uid://cyw6lm3w4ni6e" path="res://Scripts/Screenshot.gd" id="11_4kpch"]
 
 [sub_resource type="Curve" id="Curve_vy5pj"]
-_data = [Vector2(0, 0.91495574), 0.0, 0.0, 0, 0, Vector2(0.14285715, 0.55674434), 0.0, 0.0, 0, 0, Vector2(0.2857143, 0.5), 0.0, 0.0, 0, 0, Vector2(0.42857143, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5714286, 0.5), 0.0, 0.0, 0, 0, Vector2(0.71428573, 0.5), 0.0, 0.0, 0, 0, Vector2(0.85714287, 0.5), 0.0, 0.0, 0, 0]
-point_count = 7
+_data = [Vector2(0, 0.39571416), 0.0, 0.0, 0, 0, Vector2(0.083333336, 0.17073488), 0.0, 0.0, 0, 0, Vector2(0.16666667, 0.73617005), 0.0, 0.0, 0, 0, Vector2(0.25, 0.5), 0.0, 0.0, 0, 0, Vector2(0.33333334, 0.5), 0.0, 0.0, 0, 0, Vector2(0.41666666, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(0.5833333, 0.5), 0.0, 0.0, 0, 0, Vector2(0.6666667, 0.5), 0.0, 0.0, 0, 0, Vector2(0.75, 0.5), 0.0, 0.0, 0, 0, Vector2(0.8333333, 0.5), 0.0, 0.0, 0, 0, Vector2(0.9166667, 0.5), 0.0, 0.0, 0, 0]
+point_count = 12
 metadata/_snap_enabled = true
 metadata/_snap_count = 2
 
@@ -32,6 +32,7 @@ curve = SubResource("Curve_vy5pj")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vy5pj"]
 size = Vector2(512, 512)
+subdivide_depth = 69
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_r0du0"]
 size = Vector2(10, 512)
@@ -46,9 +47,6 @@ script = ExtResource("1_jw32o")
 [node name="GameManager" type="Node3D" parent="." unique_id=896048579]
 script = ExtResource("3_4kpch")
 curve = SubResource("Curve_vy5pj")
-point_count = 7
-visual_coeff = 2.0
-period = 13.45
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameManager" unique_id=1509616680]
 environment = SubResource("Environment_uu6xs")
@@ -66,8 +64,8 @@ params/low_vection = 1
 params/road_curve_texture = SubResource("CurveTexture_bmxlf")
 params/road_deviation = 10.0
 params/road_scale = 16.0
-params/road_speed = 0.07434944237918216
-params/time = 8.225030999995683
+params/road_speed = 2.0
+params/time = 23.681706666424223
 
 [node name="Player" parent="GameManager" unique_id=1907890505 instance=ExtResource("4_rgh2o")]
 transform = Transform3D(1, 0, 2.3803182e-13, 0, 0.9999945, 0, 2.3803182e-13, 0, 0.9999945, 0.00018243272, 0, 0)
